@@ -54,7 +54,7 @@
     .featureMain{min-height:610px}
     .featureSmall{min-height:297px}
     .featureStack{display:grid;gap:16px}
-    .featureMain img,.featureSmall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62)}
+    .featureMain img,.featureSmall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.04) brightness(.62)}
     .featureMain:after,.featureSmall:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.10) 65%)}
     .featureCopy{position:absolute;left:34px;right:34px;bottom:32px;z-index:2}
     .featureCopy .type{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
@@ -83,7 +83,7 @@
     .areas{background:#f7f7f7}
     .areaGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .area{background:#fff;border:1px solid var(--line);overflow:hidden}
-    .area img{width:100%;height:290px;object-fit:cover}
+    .area img{width:100%;height:290px;object-fit:cover;filter:grayscale(100%) contrast(1.03)}
     .areaBody{padding:28px}
     .areaBody h3{font-family:Georgia,serif;font-size:2rem;margin-bottom:10px}
     .areaBody p{color:var(--muted)}
@@ -121,7 +121,7 @@
 
     .latestGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
     .storyLarge,.storySmall{border-top:1px solid #aaa;padding-top:16px}
-    .storyLarge img{width:100%;height:360px;object-fit:cover;margin-bottom:18px}
+    .storyLarge img{width:100%;height:360px;object-fit:cover;margin-bottom:18px;filter:grayscale(100%) contrast(1.03)}
     .storyLarge h3{font-family:Georgia,serif;font-size:2.1rem}
     .storySmall{display:grid;gap:18px}
     .miniStory{padding-bottom:18px;border-bottom:1px solid var(--line)}
