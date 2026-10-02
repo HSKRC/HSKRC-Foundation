@@ -1,777 +1,407 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="HSKRC Humanitarian Foundation — a proposed Australia-based humanitarian initiative focused on transparent, accountable support for vulnerable communities in Afghanistan.">
-  <meta name="theme-color" content="#0b0d0c">
+  <meta name="theme-color" content="#ffffff">
   <title>HSKRC Humanitarian Foundation</title>
   <style>
     :root{
-      --bg:#0b0d0c;
-      --bg-2:#101310;
-      --panel:#151916;
-      --panel-2:#1a201c;
-      --text:#f5f7f5;
-      --muted:#a9b1ab;
-      --line:rgba(255,255,255,.09);
-      --accent:#39c978;
-      --accent-2:#78dda4;
-      --accent-soft:rgba(57,201,120,.10);
-      --shadow:0 30px 90px rgba(0,0,0,.40);
-      --radius:28px;
-      --max:1200px;
+      --bg:#ffffff;
+      --ink:#161616;
+      --muted:#6f6f6f;
+      --soft:#f4f4f4;
+      --line:#dddddd;
+      --red:#8f1d2c;
+      --red-dark:#67131f;
+      --red-soft:#f7eef0;
+      --max:1240px;
+      --radius:22px;
+      --shadow:0 18px 55px rgba(0,0,0,.10);
     }
-
-    html[data-theme="light"]{
-      --bg:#f5f7f5;
-      --bg-2:#ffffff;
-      --panel:#ffffff;
-      --panel-2:#edf2ee;
-      --text:#101411;
-      --muted:#667069;
-      --line:rgba(18,36,23,.10);
-      --shadow:0 24px 65px rgba(28,44,33,.10);
-    }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      line-height:1.65;
-      background:
-        radial-gradient(circle at 8% -12%, rgba(57,201,120,.12), transparent 34%),
-        radial-gradient(circle at 90% 8%, rgba(120,221,164,.07), transparent 28%),
-        var(--bg);
-    }
-
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
     a{color:inherit;text-decoration:none}
     button,input{font:inherit}
-    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
-    .section{padding:108px 0;border-top:1px solid var(--line)}
-    .eyebrow,.kicker{
-      color:var(--accent);
-      font-size:.73rem;
-      font-weight:800;
-      letter-spacing:.18em;
-      text-transform:uppercase
-    }
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+    .section{padding:88px 0;border-top:1px solid var(--line)}
+    h1,h2,h3,p{margin-top:0}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:24px}
+    .muted{color:var(--muted)}
 
-    .topbar{
-      border-bottom:1px solid var(--line);
-      color:var(--muted);
-      font-size:.76rem;
-      background:rgba(0,0,0,.16)
-    }
-    .topbar .container{
-      min-height:36px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px
-    }
-    .status-dot{
-      width:7px;height:7px;border-radius:50%;
-      display:inline-block;margin-right:7px;
-      background:var(--accent);
-      box-shadow:0 0 0 0 rgba(57,201,120,.42);
-      animation:pulse 2s infinite
-    }
-    @keyframes pulse{70%{box-shadow:0 0 0 9px transparent}}
+    .topbar{background:#111;color:#eee;font-size:.78rem}
+    .topbar .container{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .topbar b{color:#fff}
 
-    .header{
-      position:sticky;top:0;z-index:50;
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(18px);
-      background:color-mix(in srgb,var(--bg) 80%,transparent)
-    }
-    .navwrap{height:78px;display:flex;align-items:center;gap:22px}
-    .brand{display:flex;align-items:center;gap:13px;min-width:max-content}
-    .brandmark{
-      width:44px;height:44px;border-radius:15px;
-      display:grid;place-items:center;
-      border:1px solid rgba(57,201,120,.26);
-      background:var(--accent-soft)
-    }
-    .brandmark svg{width:27px;height:27px}
-    .brand strong{display:block;font-size:.88rem;letter-spacing:.18em}
-    .brand small{display:block;color:var(--muted);font-size:.69rem;margin-top:1px}
-    .nav{margin-left:auto;display:flex;gap:20px;align-items:center}
-    .nav a{font-size:.87rem;color:var(--muted);transition:.2s}
-    .nav a:hover{color:var(--text)}
-    .navcta{
-      border:1px solid rgba(57,201,120,.28);
-      border-radius:999px;
-      padding:10px 15px;
-      color:var(--accent)!important;
-      background:var(--accent-soft)
-    }
-    .iconbtn{
-      width:40px;height:40px;border-radius:50%;
-      border:1px solid var(--line);
-      background:var(--panel);
-      color:var(--text);
-      display:grid;place-items:center;
-      cursor:pointer
-    }
-    .menu{display:none}
+    .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .navwrap{height:82px;display:flex;align-items:center;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .mark{width:46px;height:46px;border:2px solid var(--red);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;font-size:1.25rem;color:var(--red)}
+    .brand strong{display:block;letter-spacing:.15em;font-size:.88rem}
+    .brand small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+    .nav a{font-size:.88rem;color:#444}
+    .nav a:hover{color:var(--red)}
+    .donateLink{padding:11px 15px;border:1px solid var(--red);color:var(--red)!important}
+    .menu{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;width:42px;height:42px;cursor:pointer}
 
-    .hero{
-      min-height:calc(100vh - 114px);
-      display:flex;align-items:center;
-      padding:84px 0 44px;
-      position:relative;overflow:hidden
-    }
-    .hero:before{
-      content:"";
-      position:absolute;inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
-      background-size:54px 54px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),transparent 90%);
-      pointer-events:none
-    }
-    html[data-theme="light"] .hero:before{
-      background-image:
-        linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px)
-    }
-    .heroGrid{
-      position:relative;
-      display:grid;
-      grid-template-columns:1.13fr .87fr;
-      gap:70px;
-      align-items:center
-    }
-    .hero h1{
-      font-size:clamp(3.8rem,7.2vw,7rem);
-      line-height:.91;
-      letter-spacing:-.06em;
-      margin:24px 0 28px;
-      max-width:820px
-    }
-    .hero h1 span{color:var(--accent)}
-    .lead{max-width:760px;color:var(--muted);font-size:1.11rem}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}
-    .btn{
-      min-height:50px;padding:0 20px;border-radius:14px;
-      display:inline-flex;align-items:center;justify-content:center;
-      border:1px solid transparent;
-      font-weight:760;transition:.2s;cursor:pointer
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .primary{
-      color:#07110b;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 14px 32px rgba(57,201,120,.14)
-    }
-    .ghost{
-      border-color:var(--line);
-      background:color-mix(in srgb,var(--panel) 86%,transparent)
-    }
-    .status{
-      margin-top:24px;
-      display:flex;gap:8px;align-items:center;
-      color:var(--muted);font-size:.86rem
-    }
-    .status b{color:var(--text)}
+    .hero{padding:0 0 34px}
+    .featureGrid{display:grid;grid-template-columns:1.45fr .75fr;gap:16px}
+    .featureMain,.featureSmall{position:relative;overflow:hidden;background:#222;color:#fff}
+    .featureMain{min-height:610px}
+    .featureSmall{min-height:297px}
+    .featureStack{display:grid;gap:16px}
+    .featureMain img,.featureSmall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62)}
+    .featureMain:after,.featureSmall:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.10) 65%)}
+    .featureCopy{position:absolute;left:34px;right:34px;bottom:32px;z-index:2}
+    .featureCopy .type{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+    .featureMain h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,5vw,5.6rem);line-height:.98;letter-spacing:-.045em;max-width:900px;margin-bottom:18px}
+    .featureSmall h3{font-family:Georgia,"Times New Roman",serif;font-size:1.75rem;line-height:1.06;margin-bottom:10px}
+    .learn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.75);padding-bottom:3px}
 
-    .heroPanel{
-      border:1px solid var(--line);
-      border-radius:34px;
-      padding:28px;
-      min-height:520px;
-      background:
-        linear-gradient(160deg,rgba(57,201,120,.07),transparent 45%),
-        var(--panel);
-      box-shadow:var(--shadow);
-      position:relative;overflow:hidden
-    }
-    .heroPanel:after{
-      content:"";
-      position:absolute;width:260px;height:260px;border-radius:50%;
-      right:-130px;bottom:-140px;
-      background:radial-gradient(circle,rgba(57,201,120,.15),transparent 68%)
-    }
-    .panelTop{
-      position:relative;z-index:2;
-      display:flex;justify-content:space-between;gap:12px;align-items:center;
-      color:var(--muted);font-size:.79rem
-    }
-    .chip{
-      border:1px solid rgba(57,201,120,.22);
-      border-radius:999px;
-      padding:6px 10px;
-      color:var(--accent);
-      background:var(--accent-soft)
-    }
-    .panelStatement{
-      position:relative;z-index:2;
-      padding:66px 0 54px
-    }
-    .panelStatement small{display:block;color:var(--muted);font-size:.76rem}
-    .panelStatement strong{
-      display:block;
-      font-size:3.2rem;line-height:1.02;letter-spacing:-.045em;
-      max-width:420px;margin-top:10px
-    }
-    .panelStatement strong span{color:var(--accent)}
-    .principles{
-      position:relative;z-index:2;
-      display:grid;grid-template-columns:repeat(3,1fr);gap:10px
-    }
-    .principles div{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:15px;
-      background:var(--bg-2)
-    }
-    .principles b{display:block;color:var(--accent);font-size:.78rem}
-    .principles span{display:block;color:var(--muted);font-size:.73rem;margin-top:4px}
+    .brief{padding:26px 0 42px;border-bottom:1px solid var(--line)}
+    .briefHead{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}
+    .briefHead h3{font-family:Georgia,serif;font-size:2rem;margin:0}
+    .briefGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .briefItem{border-top:2px solid #111;padding-top:14px}
+    .briefItem time{display:block;color:var(--muted);font-size:.76rem;margin-bottom:8px}
+    .briefItem b{font-size:1rem}
 
-    .trust{
-      position:relative;
-      display:grid;grid-template-columns:repeat(5,1fr);
-      gap:12px;
-      margin-top:62px;padding-top:22px;
-      border-top:1px solid var(--line);
-      color:var(--muted);font-size:.75rem;text-align:center
-    }
+    .missionGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:80px;align-items:start}
+    .missionText{font-size:1.15rem;color:#444}
+    .missionText p{margin-bottom:18px}
+    .note{margin-top:24px;padding:18px 20px;border-left:4px solid var(--red);background:var(--red-soft);font-size:.94rem;color:#4d3338}
 
-    .section h2{
-      font-size:clamp(2.7rem,4.8vw,4.9rem);
-      line-height:1.02;
-      letter-spacing:-.05em;
-      margin:12px 0 0
-    }
-    .sectionHead{
-      display:flex;justify-content:space-between;align-items:end;
-      gap:42px;margin-bottom:42px
-    }
-    .sectionHead p{max-width:500px;color:var(--muted);margin:0}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:86px;align-items:start}
-    .copy{color:var(--muted);font-size:1.04rem}
-    .copy p:first-child{margin-top:0}
-    .callout{
-      margin-top:28px;padding:22px;
-      border:1px solid rgba(57,201,120,.18);
-      border-radius:18px;
-      background:var(--accent-soft)
-    }
-    .callout b{display:block;color:var(--text);margin-bottom:6px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+    .stat{padding-top:18px;border-top:1px solid #bbb}
+    .stat strong{display:block;font-family:Georgia,serif;font-size:3.1rem;line-height:1;color:var(--red);margin-bottom:8px}
+    .stat span{color:var(--muted);font-size:.9rem}
 
-    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .card{
-      min-height:330px;padding:28px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:
-        linear-gradient(160deg,rgba(57,201,120,.035),transparent 45%),
-        var(--panel);
-      position:relative;overflow:hidden;transition:.25s
-    }
-    .card:hover{transform:translateY(-5px);border-color:rgba(57,201,120,.30)}
-    .num{color:var(--accent);font-size:.77rem;font-weight:850;letter-spacing:.16em}
-    .card h3{font-size:2.05rem;letter-spacing:-.025em;margin:82px 0 10px}
-    .card p{color:var(--muted);max-width:520px}
-    .meta{position:absolute;bottom:26px;color:var(--accent-2);font-size:.84rem}
+    .areas{background:#f7f7f7}
+    .areaGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .area{background:#fff;border:1px solid var(--line);overflow:hidden}
+    .area img{width:100%;height:290px;object-fit:cover}
+    .areaBody{padding:28px}
+    .areaBody h3{font-family:Georgia,serif;font-size:2rem;margin-bottom:10px}
+    .areaBody p{color:var(--muted)}
+    .areaLinks{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+    .areaLinks span{font-size:.86rem;border-bottom:1px solid #999;padding-bottom:2px}
 
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .step{
-      padding:24px;border:1px solid var(--line);border-radius:20px;
-      background:color-mix(in srgb,var(--panel) 76%,transparent)
-    }
-    .step span{
-      width:36px;height:36px;border-radius:50%;
-      display:grid;place-items:center;
-      border:1px solid rgba(57,201,120,.24);
-      color:var(--accent);font-weight:800;font-size:.78rem
-    }
-    .step h3{font-size:1rem;margin:26px 0 8px}
-    .step p{margin:0;color:var(--muted);font-size:.88rem}
-
-    .trackerShell{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:22px;
-      align-items:stretch
-    }
-    .trackerIntro,.trackerBox{
-      border:1px solid var(--line);
-      border-radius:26px;
-      background:var(--panel);
-      padding:30px
-    }
-    .trackerIntro p{color:var(--muted)}
-    .trackerIntro .example{
-      margin-top:22px;
-      padding:16px;
-      border:1px dashed rgba(57,201,120,.28);
-      border-radius:14px;
-      color:var(--muted);
-      background:var(--accent-soft);
-      font-size:.86rem
-    }
-    .trackerIntro code{color:var(--accent);font-weight:800}
+    .trackWrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px}
+    .trackIntro p{color:var(--muted)}
+    .demoCode{display:inline-block;margin-top:12px;padding:8px 10px;background:var(--soft);font-weight:700;color:var(--red)}
+    .tracker{border:1px solid var(--line);padding:28px}
     .trackerForm{display:flex;gap:10px}
-    .trackerForm input{
-      flex:1;height:50px;min-width:0;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--bg-2);color:var(--text);
-      padding:0 14px;outline:none
-    }
-    .trackerForm input:focus{border-color:var(--accent)}
-    .trackerResult{
-      margin-top:20px;
-      min-height:230px;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:22px;
-      background:var(--bg-2)
-    }
-    .trackerEmpty{
-      height:100%;
-      min-height:185px;
-      display:flex;flex-direction:column;
-      align-items:center;justify-content:center;
-      text-align:center;color:var(--muted)
-    }
-    .trackerEmpty strong{color:var(--text);font-size:1.05rem}
-    .projectResult{display:none}
-    .projectResult.show{display:block}
-    .projectHead{
-      display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
-      margin-bottom:22px
-    }
-    .projectHead small{color:var(--muted)}
-    .projectHead h3{margin:3px 0 0;font-size:1.35rem}
-    .state{
-      border:1px solid rgba(57,201,120,.24);
-      background:var(--accent-soft);
-      color:var(--accent);
-      padding:7px 10px;border-radius:999px;
-      font-size:.76rem;font-weight:800
-    }
-    .progressTrack{
-      height:12px;border-radius:999px;
-      background:var(--panel-2);overflow:hidden;
-      border:1px solid var(--line)
-    }
-    .progressBar{
-      height:100%;width:0%;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      transition:width .6s ease
-    }
-    .projectGrid{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      gap:10px;margin-top:18px
-    }
-    .projectGrid div{
-      border:1px solid var(--line);
-      border-radius:14px;padding:14px
-    }
-    .projectGrid b{display:block;font-size:.98rem}
-    .projectGrid span{display:block;color:var(--muted);font-size:.72rem;margin-top:4px}
-    .trackNote{margin-top:15px;color:var(--muted);font-size:.8rem}
+    .trackerForm input{flex:1;height:50px;border:1px solid #bbb;padding:0 14px}
+    .trackerForm button{height:50px;padding:0 20px;background:var(--red);color:#fff;border:0;cursor:pointer;font-weight:700}
+    .trackerForm button:hover{background:var(--red-dark)}
+    .trackerResult{margin-top:18px;padding:22px;background:var(--soft);min-height:190px}
+    .empty{min-height:145px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted)}
+    .result{display:none}
+    .result.show{display:block}
+    .resultTop{display:flex;justify-content:space-between;gap:16px;align-items:start}
+    .status{font-size:.75rem;font-weight:800;color:var(--red);border:1px solid #c99ca4;padding:6px 9px}
+    .progress{height:12px;background:#ddd;margin:20px 0 16px;overflow:hidden}
+    .bar{height:100%;width:0;background:var(--red);transition:width .5s}
+    .trackStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .trackStats div{background:#fff;border:1px solid var(--line);padding:14px}
+    .trackStats b{display:block}
+    .trackStats span{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}
 
-    .governance{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .govCard{
-      padding:28px;border:1px solid var(--line);
-      border-radius:24px;background:var(--panel)
-    }
-    .govCard h3{font-size:1.65rem;margin:0 0 8px}
-    .govCard p{color:var(--muted);margin:0}
-    .checks{display:grid;gap:10px;margin-top:20px}
-    .check{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:.92rem}
-    .check i{font-style:normal;color:var(--accent);font-weight:900}
+    .transparency{background:#171717;color:#fff}
+    .transparency .muted{color:#b9b9b9}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#444;border:1px solid #444}
+    .step{background:#171717;padding:28px}
+    .step span{display:block;color:#e58a96;font-weight:800;margin-bottom:44px}
+    .step h3{font-size:1.05rem;margin-bottom:8px}
+    .step p{color:#b8b8b8;font-size:.9rem}
 
-    .supportShell{
-      border:1px solid var(--line);border-radius:34px;padding:48px;
-      background:
-        radial-gradient(circle at 90% 10%,rgba(57,201,120,.09),transparent 36%),
-        var(--panel);
-      display:grid;grid-template-columns:1.15fr .85fr;gap:48px
-    }
-    .supportShell p{color:var(--muted)}
-    .launch{
-      background:var(--bg-2);
-      border:1px solid var(--line);
-      border-radius:22px;padding:26px
-    }
-    .badge{
-      color:var(--accent);
-      font-size:.72rem;font-weight:800;
-      letter-spacing:.14em;text-transform:uppercase
-    }
-    .launch h3{font-size:1.7rem;margin:8px 0 6px}
-    .launchForm{display:flex;gap:10px;margin-top:18px}
-    .launchForm input{
-      height:50px;flex:1;min-width:0;
-      border:1px solid var(--line);border-radius:14px;
-      background:var(--panel);color:var(--text);
-      padding:0 14px;outline:none
-    }
-    .launchForm input:focus{border-color:var(--accent)}
-    #msg{display:block;margin-top:12px;color:var(--muted);font-size:.78rem}
+    .latestGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
+    .storyLarge,.storySmall{border-top:1px solid #aaa;padding-top:16px}
+    .storyLarge img{width:100%;height:360px;object-fit:cover;margin-bottom:18px}
+    .storyLarge h3{font-family:Georgia,serif;font-size:2.1rem}
+    .storySmall{display:grid;gap:18px}
+    .miniStory{padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .miniStory time{color:var(--muted);font-size:.75rem}
+    .miniStory h4{font-size:1rem;margin:6px 0 0}
 
-    .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-    .contactCard{
-      padding:28px;border:1px solid var(--line);border-radius:22px;
-      background:var(--panel);display:grid;gap:10px
-    }
-    .contactCard a{color:var(--accent);font-weight:700}
-    .contactCard span{color:var(--muted)}
+    .support{background:var(--red);color:#fff}
+    .supportGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .support h2{margin-bottom:16px}
+    .support p{color:#f2d9dd}
+    .supportBox{border:1px solid rgba(255,255,255,.45);padding:28px}
+    .supportBox b{display:block;font-size:1.2rem;margin-bottom:8px}
 
-    footer{padding:34px 0 46px;border-top:1px solid var(--line)}
-    .footerGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:center}
-    .footerGrid p{color:var(--muted);font-size:.78rem;text-align:center;margin:0}
-    .footlinks{display:flex;justify-content:flex-end;gap:18px;color:var(--muted);font-size:.78rem}
+    .contact{padding:70px 0}
+    .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+    .contactCard{border-top:2px solid #111;padding-top:18px;display:grid;gap:8px}
+    .contactCard a{color:var(--red);font-weight:700}
 
-    .reveal{opacity:0;transform:translateY(18px);transition:.7s ease}
-    .reveal.visible{opacity:1;transform:none}
+    footer{background:#111;color:#eee;padding:42px 0}
+    .footerGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start}
+    .footerGrid p{color:#aaa;font-size:.8rem}
+    .footerLinks{display:flex;gap:16px;justify-content:flex-end;flex-wrap:wrap;font-size:.8rem}
 
-    @media(max-width:940px){
-      .nav{
-        display:none;position:absolute;top:78px;left:20px;right:20px;
-        flex-direction:column;align-items:stretch;
-        padding:18px;background:var(--panel);
-        border:1px solid var(--line);border-radius:18px
-      }
-      .nav.open{display:flex}
-      .menu{display:grid;margin-left:auto}
-      .hero{padding-top:56px}
-      .heroGrid,.two,.supportShell,.contactGrid,.trackerShell{grid-template-columns:1fr;gap:38px}
-      .flow{grid-template-columns:1fr 1fr}
-      .governance{grid-template-columns:1fr}
-      .trust{grid-template-columns:1fr 1fr}
-      .sectionHead{display:block}
-      .sectionHead p{margin-top:18px}
-      .footerGrid{grid-template-columns:1fr}
-      .footerGrid p{text-align:left}
-      .footlinks{justify-content:flex-start;flex-wrap:wrap}
+    @media(max-width:960px){
+      .nav{display:none;position:absolute;top:82px;left:20px;right:20px;background:#fff;border:1px solid var(--line);padding:18px;flex-direction:column;align-items:stretch}
+      .nav.open{display:flex}.menu{display:block}
+      .featureGrid,.missionGrid,.trackWrap,.latestGrid,.supportGrid,.contactGrid{grid-template-columns:1fr}
+      .featureMain{min-height:500px}.featureStack{grid-template-columns:1fr 1fr}.featureSmall{min-height:280px}
+      .stats{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.footerGrid{grid-template-columns:1fr}.footerLinks{justify-content:flex-start}
     }
 
     @media(max-width:620px){
       .container{width:min(var(--max),calc(100% - 26px))}
       .topbar .container{padding:8px 0;align-items:flex-start;flex-direction:column;gap:2px}
-      .navwrap{height:70px}
-      .hero{min-height:auto;padding:46px 0 20px}
-      .hero h1{font-size:3.45rem}
-      .lead{font-size:1rem}
-      .heroPanel{min-height:auto;padding:21px;border-radius:28px}
-      .panelStatement{padding:45px 0 38px}
-      .panelStatement strong{font-size:2.45rem}
-      .principles{grid-template-columns:1fr}
-      .trust{grid-template-columns:1fr 1fr}
-      .section{padding:82px 0}
-      .section h2{font-size:2.55rem}
-      .cards,.flow{grid-template-columns:1fr}
-      .trackerForm,.launchForm{flex-direction:column}
-      .projectGrid{grid-template-columns:1fr}
-      .supportShell{padding:24px}
+      .navwrap{height:72px}
+      .featureMain{min-height:520px}.featureStack{grid-template-columns:1fr}.featureSmall{min-height:260px}
+      .featureCopy{left:22px;right:22px;bottom:22px}.featureMain h1{font-size:3.15rem}
+      .briefGrid,.areaGrid,.stats,.steps,.trackStats{grid-template-columns:1fr}
+      .trackerForm{flex-direction:column}.trackerForm button{width:100%}
+      .section{padding:72px 0}
     }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container">
-      <span><span class="status-dot"></span><strong style="color:var(--accent)">Pre-launch initiative</strong> — registration and compliance setup in progress.</span>
+      <span><b>Pre-launch initiative</b> — registration, governance and compliance setup in progress.</span>
       <span>Melbourne, Australia • Humanitarian focus: Afghanistan</span>
     </div>
   </div>
 
-  <header class="header" id="top">
+  <header class="header">
     <div class="container navwrap">
-      <a class="brand" href="#top" aria-label="HSKRC Humanitarian Foundation home">
-        <span class="brandmark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M6 7v18M26 7v18M7 16h18" stroke="#39c978" stroke-width="3.4" stroke-linecap="round"/>
-          </svg>
-        </span>
+      <a class="brand" href="#top">
+        <span class="mark">H</span>
         <span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span>
       </a>
-
-      <button class="iconbtn menu" aria-label="Open menu" aria-expanded="false">☰</button>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#mission">Mission</a>
-        <a href="#programs">Programs</a>
+      <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="nav">
+        <a href="#mission">About</a>
+        <a href="#areas">What We Do</a>
         <a href="#track">Track Funds</a>
         <a href="#transparency">Transparency</a>
-        <a href="#governance">Governance</a>
+        <a href="#latest">Latest</a>
         <a href="#contact">Contact</a>
-        <a class="navcta" href="#support">Support</a>
+        <a class="donateLink" href="#support">Support</a>
       </nav>
-      <button class="iconbtn theme" aria-label="Toggle theme" title="Toggle theme">◐</button>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <div class="container">
-        <div class="heroGrid">
-          <div>
-            <div class="eyebrow">Humanity • Education • Relief • Afghanistan</div>
-            <h1>Humanitarian support built on <span>trust.</span></h1>
-            <p class="lead">
-              HSKRC Humanitarian Foundation is a proposed Australia-based humanitarian initiative
-              being developed to support vulnerable communities in Afghanistan through transparent,
-              carefully documented and accountable projects.
-            </p>
-            <div class="actions">
-              <a class="btn primary" href="#programs">Explore planned programs</a>
-              <a class="btn ghost" href="#track">Track funds</a>
-            </div>
-            <div class="status"><span class="status-dot"></span><b>Current stage:</b> organisational setup before fundraising.</div>
+      <div class="container featureGrid">
+        <article class="featureMain">
+          <img src="https://images.unsplash.com/photo-1489493585363-d69421e0edd3?auto=format&fit=crop&w=1600&q=85" alt="Mountain landscape in Afghanistan region">
+          <div class="featureCopy">
+            <div class="type">Our purpose</div>
+            <h1>Supporting dignity, resilience and opportunity in Afghanistan.</h1>
+            <a class="learn" href="#mission">Learn more →</a>
           </div>
+        </article>
 
-          <aside class="heroPanel" aria-label="Foundation operating principles">
-            <div class="panelTop">
-              <span>Operating principle</span>
-              <span class="chip">Accountability first</span>
+        <div class="featureStack">
+          <article class="featureSmall">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=85" alt="Children in a community setting">
+            <div class="featureCopy">
+              <div class="type">Education</div>
+              <h3>Helping children access essential learning support.</h3>
+              <a class="learn" href="#areas">Learn more →</a>
             </div>
-            <div class="panelStatement">
-              <small>From every contribution to every outcome</small>
-              <strong>Clear. Traceable. <span>Accountable.</span></strong>
+          </article>
+
+          <article class="featureSmall">
+            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=85" alt="Community volunteers working together">
+            <div class="featureCopy">
+              <div class="type">Humanitarian relief</div>
+              <h3>Designing accountable support for vulnerable families.</h3>
+              <a class="learn" href="#transparency">Learn more →</a>
             </div>
-            <div class="principles">
-              <div><b>01</b><span>Clear project budgets</span></div>
-              <div><b>02</b><span>Documented distribution</span></div>
-              <div><b>03</b><span>Public reporting</span></div>
-            </div>
-          </aside>
-        </div>
-
-        <div class="trust">
-          <span>Responsible giving</span>
-          <span>Community-focused</span>
-          <span>Evidence-led</span>
-          <span>Non-commercial</span>
-          <span>Australia-based initiative</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="mission">
-      <div class="container two">
-        <div>
-          <div class="kicker">Our mission</div>
-          <h2>Help where it matters — and document how it was delivered.</h2>
-        </div>
-        <div class="copy">
-          <p>
-            Our mission is to support vulnerable communities in Afghanistan through practical,
-            carefully scoped humanitarian projects that prioritise dignity, accountability and responsible stewardship.
-          </p>
-          <p>
-            The humanitarian foundation is intended to operate separately from HSKRC's research activities,
-            with dedicated governance, financial records and project reporting.
-          </p>
-          <div class="callout">
-            <b>Pre-launch commitment</b>
-            We will not present the organisation as a registered charity, accept public donations,
-            or claim tax-deductibility until the relevant registration and compliance requirements are formally completed.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="programs">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <div class="kicker">Planned programs</div>
-            <h2>Focused support. Measurable outcomes.</h2>
-          </div>
-          <p>Programs will be activated only after legal, banking, governance and compliance arrangements are in place.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="num">01 • RELIEF</div>
-            <h3>Food & Winter Relief</h3>
-            <p>Targeted food packages, winter essentials and urgent household support for vulnerable families.</p>
-            <span class="meta">Planned program</span>
-          </article>
-          <article class="card">
-            <div class="num">02 • EDUCATION</div>
-            <h3>Education Support</h3>
-            <p>School supplies, learning resources and practical educational assistance for children and students.</p>
-            <span class="meta">Planned program</span>
-          </article>
-          <article class="card">
-            <div class="num">03 • ESSENTIAL NEEDS</div>
-            <h3>Household Assistance</h3>
-            <p>Small-scale support for urgent needs identified through documented local assessments and clear eligibility criteria.</p>
-            <span class="meta">Planned program</span>
-          </article>
-          <article class="card">
-            <div class="num">04 • EMERGENCY</div>
-            <h3>Emergency Response</h3>
-            <p>Rapid, accountable assistance for communities affected by sudden humanitarian emergencies.</p>
-            <span class="meta">Planned program</span>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="track">
+    <section class="brief">
       <div class="container">
-        <div class="sectionHead">
-          <div>
-            <div class="kicker">Track funds</div>
-            <h2>A working public fund tracker.</h2>
-          </div>
-          <p>Once real projects launch, each project can have a public tracking code connected to verified project records.</p>
+        <div class="briefHead">
+          <div><div class="eyebrow">In brief</div><h3>Foundation updates</h3></div>
+          <span class="muted">Pre-launch</span>
         </div>
-
-        <div class="trackerShell">
-          <div class="trackerIntro">
-            <h3 style="font-size:1.55rem;margin-top:0">Track a project</h3>
-            <p>
-              Enter a public project code to view its status, verified financial summary and delivery stage.
-              This preview uses a clearly labelled demo record only.
-            </p>
-            <div class="example">
-              Try the demo code: <code>HSKRC-DEMO-001</code>
-            </div>
-          </div>
-
-          <div class="trackerBox">
-            <form class="trackerForm" id="trackerForm">
-              <input id="projectCode" type="text" placeholder="Enter project code" autocomplete="off" aria-label="Project code">
-              <button class="btn primary" type="submit">Track fund</button>
-            </form>
-
-            <div class="trackerResult" id="trackerResult">
-              <div class="trackerEmpty" id="trackerEmpty">
-                <strong>No project selected</strong>
-                <span>Enter a project code above to view its public record.</span>
-              </div>
-
-              <div class="projectResult" id="projectResult">
-                <div class="projectHead">
-                  <div>
-                    <small id="resultCode">HSKRC-DEMO-001</small>
-                    <h3 id="resultTitle">Demo — Winter Relief Project</h3>
-                  </div>
-                  <span class="state" id="resultState">DEMO RECORD</span>
-                </div>
-
-                <div class="progressTrack" aria-label="Demo progress">
-                  <div class="progressBar" id="progressBar"></div>
-                </div>
-
-                <div class="projectGrid">
-                  <div><b id="resultRaised">AUD 0</b><span>Verified funds received</span></div>
-                  <div><b id="resultSpent">AUD 0</b><span>Verified project spending</span></div>
-                  <div><b id="resultStage">Pre-launch</b><span>Current project stage</span></div>
-                </div>
-
-                <div class="trackNote">
-                  Demo only — this does not represent a real donation campaign or real funds.
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="briefGrid">
+          <div class="briefItem"><time>October 2026</time><b>Governance and registration framework being prepared in Australia.</b></div>
+          <div class="briefItem"><time>October 2026</time><b>Public transparency and project reporting model under development.</b></div>
+          <div class="briefItem"><time>October 2026</time><b>Initial program concepts focus on relief, education and essential needs.</b></div>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="transparency">
+    <section class="section" id="mission">
       <div class="container">
-        <div class="sectionHead">
+        <div class="missionGrid">
           <div>
-            <div class="kicker">Transparency framework</div>
-            <h2>Trust should be visible.</h2>
+            <div class="eyebrow">Our mission</div>
+            <h2>Improving lives through accountable humanitarian action.</h2>
           </div>
-          <p>Project evidence should be public enough to verify delivery while protecting the privacy and dignity of beneficiaries.</p>
+          <div class="missionText">
+            <p>HSKRC Humanitarian Foundation is being developed as an Australia-based humanitarian initiative focused on practical support for vulnerable communities in Afghanistan.</p>
+            <p>Our approach is designed around responsible stewardship, clear project budgets, documented delivery and public reporting.</p>
+            <div class="note"><b>Pre-launch:</b> the foundation will not present itself as a registered charity, accept public donations, or claim tax-deductibility until the relevant legal and compliance requirements are formally completed.</div>
+          </div>
         </div>
 
-        <div class="flow">
-          <div class="step"><span>1</span><h3>Project design</h3><p>Define the need, target group, budget, safeguards and delivery method before fundraising.</p></div>
-          <div class="step"><span>2</span><h3>Controlled funds</h3><p>Separate humanitarian funds from personal and research finances with documented transactions.</p></div>
-          <div class="step"><span>3</span><h3>Verified delivery</h3><p>Maintain receipts, distribution records and appropriate evidence of project completion.</p></div>
-          <div class="step"><span>4</span><h3>Public reporting</h3><p>Publish a clear summary of funds received, costs, delivery and measurable outcomes.</p></div>
+        <div class="stats">
+          <div class="stat"><strong>1</strong><span>Primary country focus: Afghanistan</span></div>
+          <div class="stat"><strong>4</strong><span>Initial planned program areas</span></div>
+          <div class="stat"><strong>100%</strong><span>Commitment to documented project reporting</span></div>
+          <div class="stat"><strong>0</strong><span>Public donations accepted during pre-launch</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="governance">
+    <section class="section areas" id="areas">
       <div class="container">
-        <div class="sectionHead">
-          <div>
-            <div class="kicker">Governance</div>
-            <h2>Good intentions need good systems.</h2>
-          </div>
-          <p>Responsible humanitarian work requires clear roles, records, financial controls and compliance from the beginning.</p>
-        </div>
-
-        <div class="governance">
-          <div class="govCard">
-            <h3>Organisational safeguards</h3>
-            <p>The foundation is being designed around clear financial separation and documented decision-making.</p>
-            <div class="checks">
-              <div class="check"><i>✓</i><span>Separate humanitarian banking and financial records</span></div>
-              <div class="check"><i>✓</i><span>Documented project approvals and budgets</span></div>
-              <div class="check"><i>✓</i><span>Partner and transaction due diligence</span></div>
-              <div class="check"><i>✓</i><span>Conflict-of-interest and record-keeping processes</span></div>
+        <div class="eyebrow">What we do</div>
+        <h2>Supporting people and strengthening communities.</h2>
+        <div class="areaGrid">
+          <article class="area">
+            <img src="https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=1200&q=85" alt="Food assistance">
+            <div class="areaBody">
+              <h3>Humanitarian Relief</h3>
+              <p>Food assistance, winter support and carefully scoped emergency relief for vulnerable households.</p>
+              <div class="areaLinks"><span>Food support</span><span>Winter relief</span><span>Emergency response</span></div>
             </div>
-          </div>
+          </article>
 
-          <div class="govCard">
-            <h3>Beneficiary protection</h3>
-            <p>Transparency must never require unnecessary exposure of vulnerable people.</p>
-            <div class="checks">
-              <div class="check"><i>✓</i><span>Privacy-conscious evidence and reporting</span></div>
-              <div class="check"><i>✓</i><span>Respectful use of photographs and personal information</span></div>
-              <div class="check"><i>✓</i><span>Clear eligibility and distribution records</span></div>
-              <div class="check"><i>✓</i><span>Safeguards appropriate to each project</span></div>
+          <article class="area">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85" alt="Students learning">
+            <div class="areaBody">
+              <h3>Education Support</h3>
+              <p>Learning materials, school supplies and practical support designed around locally identified needs.</p>
+              <div class="areaLinks"><span>School supplies</span><span>Learning resources</span></div>
             </div>
-          </div>
+          </article>
+
+          <article class="area">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85" alt="Community resilience">
+            <div class="areaBody">
+              <h3>Resilient Communities</h3>
+              <p>Community-led approaches that help families respond to hardship and improve household resilience.</p>
+              <div class="areaLinks"><span>Local assessment</span><span>Community support</span></div>
+            </div>
+          </article>
+
+          <article class="area">
+            <img src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1200&q=85" alt="Volunteers and community support">
+            <div class="areaBody">
+              <h3>Essential Needs</h3>
+              <p>Small-scale, documented assistance for urgent needs identified through transparent eligibility criteria.</p>
+              <div class="areaLinks"><span>Household needs</span><span>Targeted assistance</span></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="support">
-      <div class="container supportShell">
-        <div>
-          <div class="kicker">Support</div>
-          <h2>Donation facilities will open after registration.</h2>
-          <p>
-            We are intentionally not collecting donations through this website during the pre-launch phase.
-            Once registration, banking and compliance arrangements are complete, verified donation methods
-            and project-specific funding information will be published here.
-          </p>
+    <section class="section" id="track">
+      <div class="container trackWrap">
+        <div class="trackIntro">
+          <div class="eyebrow">Track funds</div>
+          <h2>See where a project stands.</h2>
+          <p>Future public projects can be assigned a tracking code so donors and visitors can view verified financial summaries and delivery status.</p>
+          <span class="demoCode">Demo: HSKRC-DEMO-001</span>
         </div>
 
-        <div class="launch">
-          <span class="badge">Pre-launch</span>
-          <h3>Join the launch list</h3>
-          <p>Leave your email address. This demo form can later be connected to HSKRC's preferred email service.</p>
-          <form class="launchForm" id="notifyForm">
-            <input id="email" type="email" placeholder="you@example.com" required aria-label="Email address">
-            <button class="btn primary" type="submit">Notify me</button>
+        <div class="tracker">
+          <form class="trackerForm" id="trackerForm">
+            <input id="projectCode" type="text" placeholder="Enter project code" aria-label="Project code">
+            <button type="submit">Track fund</button>
           </form>
-          <small id="msg">Demo only — no information is transmitted yet.</small>
+
+          <div class="trackerResult">
+            <div class="empty" id="trackerEmpty">Enter the demo code above to test the tracker.</div>
+            <div class="result" id="projectResult">
+              <div class="resultTop">
+                <div><small class="muted">HSKRC-DEMO-001</small><h3>Demo — Winter Relief Project</h3></div>
+                <span class="status">DEMO RECORD</span>
+              </div>
+              <div class="progress"><div class="bar" id="progressBar"></div></div>
+              <div class="trackStats">
+                <div><b>AUD 0</b><span>Verified funds received</span></div>
+                <div><b>AUD 0</b><span>Verified project spending</span></div>
+                <div><b>Pre-launch</b><span>Current stage</span></div>
+              </div>
+              <p class="muted" style="margin:14px 0 0;font-size:.8rem">Demo only — this does not represent real funds or a real campaign.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="contact">
+    <section class="section transparency" id="transparency">
+      <div class="container">
+        <div class="eyebrow" style="color:#e58a96">Transparency framework</div>
+        <h2>Trust should be visible.</h2>
+        <p class="muted" style="max-width:720px;margin-bottom:38px">The website is being designed to publish enough evidence to verify delivery while protecting the privacy and dignity of beneficiaries.</p>
+        <div class="steps">
+          <div class="step"><span>01</span><h3>Project design</h3><p>Define the need, target group, budget and safeguards before fundraising.</p></div>
+          <div class="step"><span>02</span><h3>Controlled funds</h3><p>Keep humanitarian finances separate, documented and reviewable.</p></div>
+          <div class="step"><span>03</span><h3>Verified delivery</h3><p>Maintain receipts, distribution records and appropriate project evidence.</p></div>
+          <div class="step"><span>04</span><h3>Public reporting</h3><p>Publish clear summaries of funds, costs, delivery and outcomes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="latest">
+      <div class="container">
+        <div class="eyebrow">Latest</div>
+        <h2>Updates and future project stories.</h2>
+        <div class="latestGrid">
+          <article class="storyLarge">
+            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1400&q=85" alt="Community members">
+            <time class="muted">October 2026</time>
+            <h3>Building a humanitarian foundation with transparency from the beginning.</h3>
+            <p class="muted">Our first priority is creating the legal, financial and reporting systems needed before fundraising starts.</p>
+          </article>
+
+          <div class="storySmall">
+            <article class="miniStory"><time>October 2026</time><h4>Initial program framework drafted for Afghanistan-focused relief.</h4></article>
+            <article class="miniStory"><time>October 2026</time><h4>Public project tracker prototype added to the website.</h4></article>
+            <article class="miniStory"><time>October 2026</time><h4>Governance and financial separation included in the pre-launch model.</h4></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support" id="support">
+      <div class="container supportGrid">
+        <div>
+          <div class="eyebrow" style="color:#fff">Support</div>
+          <h2>Donations will open only after registration.</h2>
+          <p>Verified donation methods and project-specific funding information will be published once the required legal, banking and compliance arrangements are complete.</p>
+        </div>
+        <div class="supportBox">
+          <b>Pre-launch status</b>
+          <p>No public donations are being accepted through this website yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
       <div class="container contactGrid">
         <div>
-          <div class="kicker">Contact</div>
-          <h2>Partnerships, governance and future funding enquiries.</h2>
+          <div class="eyebrow">Contact</div>
+          <h2>Partnerships and future funding enquiries.</h2>
         </div>
         <div class="contactCard">
           <a href="mailto:contact@hskrc.org">contact@hskrc.org</a>
           <a href="https://hskrc.org" target="_blank" rel="noopener">www.hskrc.org</a>
-          <span>Melbourne, Australia</span>
-          <span>Humanitarian focus: Afghanistan</span>
+          <span class="muted">Melbourne, Australia</span>
+          <span class="muted">Humanitarian focus: Afghanistan</span>
         </div>
       </div>
     </section>
@@ -779,51 +409,20 @@
 
   <footer>
     <div class="container footerGrid">
-      <div class="brand">
-        <span class="brandmark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M6 7v18M26 7v18M7 16h18" stroke="#39c978" stroke-width="3.4" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span>
-      </div>
+      <div class="brand"><span class="mark" style="border-color:#fff;color:#fff">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></div>
       <p>© <span id="year"></span> HSKRC Humanitarian Foundation • Pre-launch website</p>
-      <div class="footlinks">
-        <a href="#track">Track Funds</a>
-        <a href="#contact">Contact</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
+      <div class="footerLinks"><a href="#mission">About</a><a href="#track">Track Funds</a><a href="#contact">Contact</a><a href="#top">Back to top ↑</a></div>
     </div>
   </footer>
 
   <script>
-    const root=document.documentElement;
-    const nav=document.querySelector('.nav');
     const menu=document.querySelector('.menu');
-    const theme=document.querySelector('.theme');
-    const saved=localStorage.getItem('hskrc-foundation-theme');
-    if(saved) root.dataset.theme=saved;
-
-    theme.addEventListener('click',()=>{
-      const next=root.dataset.theme==='dark'?'light':'dark';
-      root.dataset.theme=next;
-      localStorage.setItem('hskrc-foundation-theme',next);
-    });
-
+    const nav=document.querySelector('.nav');
     menu.addEventListener('click',()=>{
       const open=nav.classList.toggle('open');
       menu.setAttribute('aria-expanded',String(open));
     });
-
-    document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{
-      nav.classList.remove('open');
-      menu.setAttribute('aria-expanded','false');
-    }));
-
-    document.querySelector('#notifyForm').addEventListener('submit',e=>{
-      e.preventDefault();
-      document.querySelector('#msg').textContent='Demo mode: the form is ready to connect after launch.';
-    });
+    document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 
     const trackerForm=document.querySelector('#trackerForm');
     const trackerEmpty=document.querySelector('#trackerEmpty');
@@ -834,41 +433,24 @@
     trackerForm.addEventListener('submit',e=>{
       e.preventDefault();
       const code=projectCode.value.trim().toUpperCase();
-
       if(code==='HSKRC-DEMO-001'){
         trackerEmpty.style.display='none';
         projectResult.classList.add('show');
-        document.querySelector('#resultCode').textContent='HSKRC-DEMO-001';
-        document.querySelector('#resultTitle').textContent='Demo — Winter Relief Project';
-        document.querySelector('#resultState').textContent='DEMO RECORD';
-        document.querySelector('#resultRaised').textContent='AUD 0';
-        document.querySelector('#resultSpent').textContent='AUD 0';
-        document.querySelector('#resultStage').textContent='Pre-launch';
-        requestAnimationFrame(()=>{progressBar.style.width='12%'});
+        requestAnimationFrame(()=>progressBar.style.width='12%');
       }else if(!code){
         projectResult.classList.remove('show');
-        progressBar.style.width='0%';
+        progressBar.style.width='0';
         trackerEmpty.style.display='flex';
-        trackerEmpty.innerHTML='<strong>Enter a project code</strong><span>Example: HSKRC-DEMO-001</span>';
+        trackerEmpty.textContent='Enter a project code. Demo: HSKRC-DEMO-001';
       }else{
         projectResult.classList.remove('show');
-        progressBar.style.width='0%';
+        progressBar.style.width='0';
         trackerEmpty.style.display='flex';
-        trackerEmpty.innerHTML='<strong>No public project found</strong><span>Check the code and try again. Live project tracking will begin after launch.</span>';
+        trackerEmpty.textContent='No public project found. Check the code and try again.';
       }
     });
 
     document.querySelector('#year').textContent=new Date().getFullYear();
-
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>
