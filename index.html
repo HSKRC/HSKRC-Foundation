@@ -2,197 +2,485 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="HSKRC Humanitarian Foundation — a proposed Australia-based humanitarian initiative focused on transparent, accountable support for vulnerable communities in Afghanistan.">
-  <meta name="theme-color" content="#08110e">
+  <meta name="theme-color" content="#06111a">
   <title>HSKRC Humanitarian Foundation</title>
   <style>
     :root{
-      --bg:#07100d;--bg2:#0b1713;--panel:#0f1e19;--panel2:#132720;
-      --text:#f4f2e9;--muted:#a9b5ae;--gold:#d7b765;--gold2:#f1d995;
-      --green:#73c6a4;--line:rgba(255,255,255,.10);--soft:rgba(215,183,101,.08);
-      --shadow:0 28px 90px rgba(0,0,0,.34);--radius:26px;--max:1180px;
+      --bg:#06111a;
+      --bg-2:#091722;
+      --panel:#0c1d2a;
+      --panel-2:#102533;
+      --text:#f6fbff;
+      --muted:#9fb2c0;
+      --line:rgba(255,255,255,.09);
+      --accent:#39d5ff;
+      --accent-2:#5be7c4;
+      --accent-3:#7d8cff;
+      --danger:#ff7285;
+      --shadow:0 28px 90px rgba(0,0,0,.38);
+      --radius:28px;
+      --max:1200px;
     }
+
     html[data-theme="light"]{
-      --bg:#f7f5ef;--bg2:#ffffff;--panel:#ffffff;--panel2:#efece3;
-      --text:#121815;--muted:#5d6963;--line:rgba(0,0,0,.10);--soft:rgba(170,128,35,.08);
-      --shadow:0 24px 70px rgba(20,30,24,.10)
+      --bg:#f4f8fb;
+      --bg-2:#ffffff;
+      --panel:#ffffff;
+      --panel-2:#eef5f8;
+      --text:#0b1822;
+      --muted:#5f7382;
+      --line:rgba(9,34,50,.10);
+      --shadow:0 24px 65px rgba(23,53,72,.10);
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      margin:0;
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
       background:
-        radial-gradient(circle at 10% -10%,rgba(215,183,101,.15),transparent 34%),
-        radial-gradient(circle at 95% 5%,rgba(115,198,164,.10),transparent 30%),
+        radial-gradient(circle at 8% -10%, rgba(57,213,255,.13), transparent 34%),
+        radial-gradient(circle at 95% 5%, rgba(91,231,196,.10), transparent 28%),
+        radial-gradient(circle at 70% 88%, rgba(125,140,255,.08), transparent 32%),
         var(--bg);
-      color:var(--text);line-height:1.65
     }
+
     a{color:inherit;text-decoration:none}
     button,input{font:inherit}
-    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    img,svg{display:block}
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .section{padding:110px 0;border-top:1px solid var(--line)}
+    .eyebrow,.kicker{
+      color:var(--accent);
+      font-size:.73rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase
+    }
+
     .topbar{
-      border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 86%,transparent);
-      color:var(--muted);font-size:.76rem
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      font-size:.76rem;
+      background:rgba(4,14,22,.46)
     }
-    .topbar .container{min-height:36px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .topbar strong{color:var(--green);font-weight:700}
+    html[data-theme="light"] .topbar{background:rgba(255,255,255,.78)}
+    .topbar .container{
+      min-height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px
+    }
+    .live-dot{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--accent-2);
+      display:inline-block;margin-right:7px;
+      box-shadow:0 0 0 0 rgba(91,231,196,.45);
+      animation:pulse 2s infinite
+    }
+    @keyframes pulse{70%{box-shadow:0 0 0 9px transparent}}
+
     .header{
-      position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);
-      backdrop-filter:blur(18px);background:color-mix(in srgb,var(--bg) 78%,transparent)
+      position:sticky;top:0;z-index:50;
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+      background:color-mix(in srgb,var(--bg) 78%,transparent)
     }
-    .navwrap{height:76px;display:flex;align-items:center;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
-    .mark{
-      width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
-      border:1px solid rgba(215,183,101,.45);color:var(--gold);background:var(--soft);
-      font-family:Georgia,serif;font-size:1.15rem;font-weight:700
+    .navwrap{height:78px;display:flex;align-items:center;gap:24px}
+    .brand{display:flex;align-items:center;gap:13px;min-width:max-content}
+    .brandmark{
+      width:44px;height:44px;border-radius:15px;
+      display:grid;place-items:center;
+      background:linear-gradient(145deg,rgba(57,213,255,.12),rgba(91,231,196,.08));
+      border:1px solid rgba(57,213,255,.24);
+      box-shadow:inset 0 0 20px rgba(57,213,255,.04)
     }
+    .brandmark svg{width:26px;height:26px}
     .brand strong{display:block;font-size:.88rem;letter-spacing:.18em}
-    .brand small{display:block;color:var(--muted);font-size:.7rem;margin-top:1px}
-    .nav{margin-left:auto;display:flex;align-items:center;gap:22px}
-    .nav a{color:var(--muted);font-size:.88rem;transition:.2s}
+    .brand small{display:block;color:var(--muted);font-size:.69rem;margin-top:1px}
+    .nav{margin-left:auto;display:flex;gap:22px;align-items:center}
+    .nav a{font-size:.88rem;color:var(--muted);transition:.2s}
     .nav a:hover{color:var(--text)}
-    .navcta{padding:10px 16px;border:1px solid rgba(215,183,101,.48);border-radius:999px;color:var(--gold2)!important}
+    .navcta{
+      border:1px solid rgba(57,213,255,.28);
+      border-radius:999px;
+      padding:10px 16px;
+      color:var(--accent)!important;
+      background:rgba(57,213,255,.05)
+    }
     .iconbtn{
-      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-      border:1px solid var(--line);background:var(--panel);color:var(--text)
+      width:40px;height:40px;border-radius:50%;
+      border:1px solid var(--line);
+      background:var(--panel);
+      color:var(--text);
+      display:grid;place-items:center;
+      cursor:pointer
     }
     .menu{display:none}
-    .hero{padding:88px 0 42px;min-height:calc(100vh - 112px);display:flex;align-items:center}
-    .heroGrid{display:grid;grid-template-columns:1.16fr .84fr;gap:72px;align-items:center}
-    .eyebrow,.kicker{color:var(--gold);font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-    .hero h1,.section h2,.display{
-      font-family:Georgia,"Times New Roman",serif;letter-spacing:-.035em
+
+    .hero{
+      min-height:calc(100vh - 114px);
+      display:flex;align-items:center;
+      padding:84px 0 44px;
+      overflow:hidden;
+      position:relative
     }
-    .hero h1{font-size:clamp(3.6rem,7vw,6.8rem);line-height:.92;margin:24px 0 28px}
-    .hero h1 em{font-style:normal;color:var(--gold2)}
+    .hero:before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:52px 52px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);
+      pointer-events:none
+    }
+    html[data-theme="light"] .hero:before{
+      background-image:
+        linear-gradient(rgba(10,35,52,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(10,35,52,.045) 1px,transparent 1px);
+    }
+    .heroGrid{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:72px;
+      align-items:center
+    }
+    .hero h1{
+      font-size:clamp(3.8rem,7.2vw,7.1rem);
+      line-height:.91;
+      letter-spacing:-.06em;
+      margin:24px 0 28px;
+      max-width:820px
+    }
+    .hero h1 span{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent
+    }
     .lead{max-width:760px;color:var(--muted);font-size:1.12rem}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}
     .btn{
-      min-height:50px;padding:0 20px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;
-      border:1px solid transparent;font-weight:750;transition:.2s;cursor:pointer
+      min-height:50px;padding:0 20px;border-radius:14px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border:1px solid transparent;
+      font-weight:760;
+      transition:.2s;
+      cursor:pointer
     }
     .btn:hover{transform:translateY(-2px)}
-    .primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171108;box-shadow:0 12px 28px rgba(215,183,101,.12)}
-    .ghost{border-color:var(--line);background:color-mix(in srgb,var(--panel) 84%,transparent)}
+    .primary{
+      color:#031219;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 14px 32px rgba(57,213,255,.13)
+    }
+    .ghost{
+      border-color:var(--line);
+      background:color-mix(in srgb,var(--panel) 84%,transparent)
+    }
     .status{
-      margin-top:24px;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.86rem
+      margin-top:24px;
+      display:flex;gap:8px;align-items:center;
+      color:var(--muted);font-size:.86rem
     }
     .status b{color:var(--text)}
-    .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(115,198,164,.42);animation:pulse 2s infinite}
-    @keyframes pulse{70%{box-shadow:0 0 0 9px transparent}}
-    .heroCard{
-      border:1px solid var(--line);border-radius:34px;padding:28px;overflow:hidden;
-      background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 8%,var(--panel)),var(--panel));
-      box-shadow:var(--shadow);position:relative
+
+    .visual{
+      border:1px solid var(--line);
+      border-radius:36px;
+      min-height:540px;
+      background:
+        linear-gradient(160deg,rgba(57,213,255,.08),rgba(91,231,196,.04) 35%,transparent 60%),
+        var(--panel);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      padding:28px
     }
-    .heroCard:after{
-      content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-140px;top:-140px;
-      background:radial-gradient(circle,rgba(215,183,101,.25),transparent 68%)
+    .visual:before{
+      content:"";
+      position:absolute;
+      inset:-20%;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(57,213,255,.14),transparent 32%),
+        conic-gradient(from 90deg at 50% 50%,transparent,rgba(91,231,196,.08),transparent 30%);
+      animation:rotate 20s linear infinite
     }
-    .heroCardTop{display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:.8rem;color:var(--muted)}
-    .pill{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--gold2)}
-    .promise{padding:54px 0 40px}
-    .promise span{display:block;color:var(--muted);font-size:.8rem}
-    .promise strong{display:block;font-family:Georgia,serif;font-size:3.2rem;line-height:1.03;margin-top:8px}
-    .promise strong em{font-style:normal;color:var(--gold2)}
-    .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .principles div{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--bg2)}
-    .principles b{display:block;color:var(--gold);font-size:.78rem}
-    .principles span{display:block;margin-top:6px;color:var(--muted);font-size:.75rem}
-    .trust{margin-top:62px;padding-top:22px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);gap:12px;text-align:center;color:var(--muted);font-size:.75rem}
-    .section{padding:108px 0;border-top:1px solid var(--line)}
-    .section h2{font-size:clamp(2.7rem,4.7vw,4.8rem);line-height:1.02;margin:12px 0 0}
-    .sectionHead{display:flex;align-items:end;justify-content:space-between;gap:42px;margin-bottom:42px}
+    @keyframes rotate{to{transform:rotate(360deg)}}
+    .visualHeader{
+      position:relative;z-index:2;
+      display:flex;justify-content:space-between;gap:12px;align-items:center;
+      color:var(--muted);font-size:.79rem
+    }
+    .chip{
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(91,231,196,.22);
+      color:var(--accent-2);
+      background:rgba(91,231,196,.05)
+    }
+    .network{
+      position:relative;z-index:2;
+      height:350px;
+      display:grid;place-items:center;
+      margin-top:24px
+    }
+    .ring{
+      position:absolute;border:1px solid rgba(57,213,255,.20);
+      border-radius:50%
+    }
+    .ring.a{width:310px;height:310px}
+    .ring.b{width:235px;height:235px;border-style:dashed}
+    .ring.c{width:150px;height:150px;border-color:rgba(91,231,196,.28)}
+    .node{
+      position:absolute;width:13px;height:13px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 26px rgba(57,213,255,.65)
+    }
+    .node.n1{top:42px;left:50%}
+    .node.n2{right:40px;top:48%}
+    .node.n3{left:48px;bottom:63px;background:var(--accent-2);box-shadow:0 0 26px rgba(91,231,196,.6)}
+    .core{
+      width:145px;height:145px;border-radius:50%;
+      background:linear-gradient(145deg,var(--panel-2),var(--bg-2));
+      border:1px solid var(--line);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;
+      box-shadow:0 0 70px rgba(57,213,255,.08)
+    }
+    .core small{color:var(--muted);font-size:.72rem}
+    .core strong{font-size:1.85rem;margin:2px 0}
+    .core span{font-size:.72rem;color:var(--accent-2)}
+    .visualStats{
+      position:relative;z-index:2;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+    }
+    .visualStats div{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:color-mix(in srgb,var(--bg-2) 86%,transparent);
+      padding:15px
+    }
+    .visualStats b{display:block;color:var(--accent);font-size:.78rem}
+    .visualStats span{display:block;color:var(--muted);font-size:.73rem;margin-top:4px}
+
+    .trust{
+      position:relative;
+      display:grid;grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-top:62px;padding-top:22px;
+      border-top:1px solid var(--line);
+      color:var(--muted);font-size:.75rem;text-align:center
+    }
+
+    .section h2{
+      font-size:clamp(2.7rem,4.8vw,4.9rem);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      margin:12px 0 0
+    }
+    .sectionHead{
+      display:flex;justify-content:space-between;align-items:end;gap:42px;
+      margin-bottom:42px
+    }
     .sectionHead p{max-width:500px;color:var(--muted);margin:0}
     .two{display:grid;grid-template-columns:1fr 1fr;gap:86px;align-items:start}
     .copy{color:var(--muted);font-size:1.04rem}
     .copy p:first-child{margin-top:0}
-    .missionCard{
-      margin-top:28px;padding:22px;border-left:3px solid var(--gold);background:var(--soft);border-radius:0 18px 18px 0
+    .missionCallout{
+      margin-top:28px;
+      padding:22px;
+      border:1px solid rgba(57,213,255,.18);
+      background:linear-gradient(135deg,rgba(57,213,255,.06),rgba(91,231,196,.04));
+      border-radius:18px
     }
-    .missionCard b{display:block;color:var(--text);margin-bottom:5px}
+    .missionCallout b{display:block;color:var(--text);margin-bottom:6px}
+
     .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .card{
-      min-height:320px;padding:28px;border:1px solid var(--line);border-radius:var(--radius);
-      background:linear-gradient(160deg,var(--panel),var(--panel2));position:relative;overflow:hidden;transition:.25s
+      min-height:330px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:
+        linear-gradient(160deg,rgba(57,213,255,.035),transparent 45%),
+        var(--panel);
+      position:relative;
+      overflow:hidden;
+      transition:.25s
     }
-    .card:hover{transform:translateY(-5px);border-color:rgba(215,183,101,.38)}
-    .num{color:var(--gold);font-weight:800;font-size:.78rem;letter-spacing:.16em}
-    .card h3{font-family:Georgia,serif;font-size:2.05rem;margin:84px 0 10px}
+    .card:after{
+      content:"";
+      position:absolute;width:150px;height:150px;border-radius:50%;
+      right:-70px;bottom:-70px;
+      background:radial-gradient(circle,rgba(91,231,196,.14),transparent 70%)
+    }
+    .card:hover{transform:translateY(-5px);border-color:rgba(57,213,255,.28)}
+    .num{color:var(--accent);font-size:.77rem;font-weight:850;letter-spacing:.16em}
+    .card h3{font-size:2.05rem;letter-spacing:-.025em;margin:82px 0 10px}
     .card p{color:var(--muted);max-width:520px}
-    .card .meta{position:absolute;bottom:26px;color:var(--gold2);font-size:.84rem}
+    .meta{position:absolute;bottom:26px;color:var(--accent-2);font-size:.84rem}
+
     .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .step{padding:24px;border:1px solid var(--line);border-radius:20px;background:color-mix(in srgb,var(--panel) 72%,transparent)}
-    .step span{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--gold);font-weight:800;font-size:.78rem}
+    .step{
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:color-mix(in srgb,var(--panel) 74%,transparent)
+    }
+    .step span{
+      width:36px;height:36px;border-radius:50%;
+      display:grid;place-items:center;
+      border:1px solid rgba(57,213,255,.22);
+      color:var(--accent);
+      font-weight:800;font-size:.78rem
+    }
     .step h3{font-size:1rem;margin:26px 0 8px}
     .step p{margin:0;color:var(--muted);font-size:.88rem}
     .report{
-      margin-top:20px;padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--panel);
-      display:flex;align-items:center;justify-content:space-between;gap:30px
+      margin-top:20px;
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(135deg,rgba(125,140,255,.05),rgba(57,213,255,.04)),var(--panel);
+      display:flex;justify-content:space-between;align-items:center;gap:30px
     }
-    .report h3{font-family:Georgia,serif;font-size:2rem;margin:4px 0}
+    .report h3{font-size:1.9rem;letter-spacing:-.025em;margin:5px 0}
     .report p{margin:0;color:var(--muted);max-width:720px}
-    .badge{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
-    .governance{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .govCard{padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--panel)}
-    .govCard h3{font-family:Georgia,serif;font-size:1.65rem;margin:0 0 8px}
+    .badge{
+      color:var(--accent-2);
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase
+    }
+
+    .governance{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .govCard{
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:var(--panel)
+    }
+    .govCard h3{font-size:1.65rem;margin:0 0 8px}
     .govCard p{color:var(--muted);margin:0}
     .checks{display:grid;gap:10px;margin-top:20px}
     .check{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:.92rem}
-    .check i{font-style:normal;color:var(--green);font-weight:900}
+    .check i{font-style:normal;color:var(--accent-2);font-weight:900}
+
     .supportShell{
-      border:1px solid var(--line);border-radius:34px;padding:48px;
-      background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 10%,var(--panel)),var(--panel));
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:48px;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(57,213,255,.10),transparent 36%),
+        linear-gradient(145deg,rgba(91,231,196,.04),transparent 55%),
+        var(--panel);
       display:grid;grid-template-columns:1.15fr .85fr;gap:48px
     }
     .supportShell p{color:var(--muted)}
-    .launch{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:26px}
-    .launch h3{font-family:Georgia,serif;font-size:1.7rem;margin:8px 0 6px}
+    .launch{
+      background:var(--bg-2);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:26px
+    }
+    .launch h3{font-size:1.7rem;margin:8px 0 6px}
     form{display:flex;gap:10px;margin-top:18px}
-    input{height:50px;flex:1;min-width:0;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);padding:0 14px;outline:none}
-    input:focus{border-color:var(--gold)}
+    input{
+      height:50px;flex:1;min-width:0;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--panel);
+      color:var(--text);
+      padding:0 14px;
+      outline:none
+    }
+    input:focus{border-color:var(--accent)}
     #msg{display:block;margin-top:12px;color:var(--muted);font-size:.78rem}
+
     .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-    .contactCard{padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--panel);display:grid;gap:10px}
-    .contactCard a{color:var(--gold2);font-weight:700}
+    .contactCard{
+      padding:28px;border:1px solid var(--line);border-radius:22px;
+      background:var(--panel);display:grid;gap:10px
+    }
+    .contactCard a{color:var(--accent);font-weight:700}
     .contactCard span{color:var(--muted)}
+
     footer{padding:34px 0 46px;border-top:1px solid var(--line)}
     .footerGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:center}
     .footerGrid p{color:var(--muted);font-size:.78rem;text-align:center;margin:0}
     .footlinks{display:flex;justify-content:flex-end;gap:18px;color:var(--muted);font-size:.78rem}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
     @media(max-width:920px){
-      .nav{display:none;position:absolute;top:76px;left:20px;right:20px;flex-direction:column;align-items:stretch;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:18px}
-      .nav.open{display:flex}.menu{display:grid;margin-left:auto}.hero{padding-top:56px}
-      .heroGrid,.two,.contactGrid,.supportShell{grid-template-columns:1fr;gap:38px}
-      .flow{grid-template-columns:1fr 1fr}.governance{grid-template-columns:1fr}.trust{grid-template-columns:1fr 1fr}
-      .sectionHead{display:block}.sectionHead p{margin-top:18px}
-      .footerGrid{grid-template-columns:1fr}.footerGrid p{text-align:left}.footlinks{justify-content:flex-start;flex-wrap:wrap}
+      .nav{
+        display:none;position:absolute;top:78px;left:20px;right:20px;
+        flex-direction:column;align-items:stretch;
+        padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:18px
+      }
+      .nav.open{display:flex}
+      .menu{display:grid;margin-left:auto}
+      .hero{padding-top:56px}
+      .heroGrid,.two,.supportShell,.contactGrid{grid-template-columns:1fr;gap:40px}
+      .flow{grid-template-columns:1fr 1fr}
+      .governance{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr 1fr}
+      .sectionHead{display:block}
+      .sectionHead p{margin-top:18px}
+      .footerGrid{grid-template-columns:1fr}
+      .footerGrid p{text-align:left}
+      .footlinks{justify-content:flex-start;flex-wrap:wrap}
     }
+
     @media(max-width:620px){
       .container{width:min(var(--max),calc(100% - 26px))}
-      .topbar .container{align-items:flex-start;padding:8px 0;flex-direction:column;gap:2px}
-      .navwrap{height:70px}.hero{min-height:auto;padding:46px 0 20px}.hero h1{font-size:3.35rem}
-      .heroCard{padding:20px;border-radius:26px}.principles{grid-template-columns:1fr}.trust{grid-template-columns:1fr 1fr}
-      .section{padding:82px 0}.section h2{font-size:2.55rem}.cards,.flow{grid-template-columns:1fr}
-      .report{display:block}.report .btn{margin-top:18px;width:100%}.supportShell{padding:24px}form{flex-direction:column}
+      .topbar .container{padding:8px 0;align-items:flex-start;flex-direction:column;gap:2px}
+      .navwrap{height:70px}
+      .hero{min-height:auto;padding:46px 0 20px}
+      .hero h1{font-size:3.5rem}
+      .lead{font-size:1rem}
+      .visual{min-height:480px;padding:20px;border-radius:28px}
+      .ring.a{width:260px;height:260px}
+      .ring.b{width:195px;height:195px}
+      .network{height:310px}
+      .visualStats{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr 1fr}
+      .section{padding:82px 0}
+      .section h2{font-size:2.55rem}
+      .cards,.flow{grid-template-columns:1fr}
+      .report{display:block}
+      .report .btn{margin-top:18px;width:100%}
+      .supportShell{padding:24px}
+      form{flex-direction:column}
     }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container">
-      <span><strong>Pre-launch initiative</strong> — registration, governance and compliance setup in progress.</span>
-      <span>Melbourne, Australia • Focus: Afghanistan</span>
+      <span><span class="live-dot"></span><strong style="color:var(--accent-2)">Pre-launch initiative</strong> — registration and compliance setup in progress.</span>
+      <span>Melbourne, Australia • Humanitarian focus: Afghanistan</span>
     </div>
   </div>
 
   <header class="header" id="top">
     <div class="container navwrap">
       <a class="brand" href="#top" aria-label="HSKRC Humanitarian Foundation home">
-        <span class="mark">H</span>
+        <span class="brandmark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M6 6v20M26 6v20M7 16h18" stroke="url(#g)" stroke-width="3.4" stroke-linecap="round"/>
+            <defs><linearGradient id="g" x1="6" y1="6" x2="27" y2="27"><stop stop-color="#39d5ff"/><stop offset="1" stop-color="#5be7c4"/></linearGradient></defs>
+          </svg>
+        </span>
         <span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span>
       </a>
 
@@ -205,7 +493,7 @@
         <a href="#contact">Contact</a>
         <a class="navcta" href="#support">Support</a>
       </nav>
-      <button class="iconbtn theme" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
+      <button class="iconbtn theme" aria-label="Toggle theme" title="Toggle theme">◐</button>
     </div>
   </header>
 
@@ -215,7 +503,7 @@
         <div class="heroGrid">
           <div>
             <div class="eyebrow">Humanity • Education • Relief • Afghanistan</div>
-            <h1>Humanitarian support built on <em>trust.</em></h1>
+            <h1>Humanitarian support built on <span>trust.</span></h1>
             <p class="lead">
               HSKRC Humanitarian Foundation is a proposed Australia-based humanitarian initiative
               being developed to support vulnerable communities in Afghanistan through transparent,
@@ -223,32 +511,48 @@
             </p>
             <div class="actions">
               <a class="btn primary" href="#programs">Explore planned programs</a>
-              <a class="btn ghost" href="#transparency">See our transparency model</a>
+              <a class="btn ghost" href="#transparency">How transparency works</a>
             </div>
-            <div class="status"><span class="pulse"></span><b>Current stage:</b> organisational setup before fundraising.</div>
+            <div class="status"><span class="live-dot"></span><b>Current stage:</b> organisational setup before fundraising.</div>
           </div>
 
-          <aside class="heroCard" aria-label="Operating principles">
-            <div class="heroCardTop"><span>Our operating principle</span><span class="pill">Transparent by design</span></div>
-            <div class="promise">
-              <span>From every contribution to every project outcome</span>
-              <strong>Clear. <em>Traceable.</em> Accountable.</strong>
+          <aside class="visual" aria-label="Foundation transparency concept">
+            <div class="visualHeader">
+              <span>Transparency architecture</span>
+              <span class="chip">Accountability first</span>
             </div>
-            <div class="principles">
-              <div><b>01</b><span>Clear project budgets</span></div>
-              <div><b>02</b><span>Documented delivery</span></div>
+            <div class="network">
+              <div class="ring a"></div>
+              <div class="ring b"></div>
+              <div class="ring c"></div>
+              <span class="node n1"></span>
+              <span class="node n2"></span>
+              <span class="node n3"></span>
+              <div class="core">
+                <small>Every project</small>
+                <strong>Tracked</strong>
+                <span>from funding to delivery</span>
+              </div>
+            </div>
+            <div class="visualStats">
+              <div><b>01</b><span>Clear project budget</span></div>
+              <div><b>02</b><span>Documented distribution</span></div>
               <div><b>03</b><span>Public reporting</span></div>
             </div>
           </aside>
         </div>
 
         <div class="trust">
-          <span>Responsible giving</span><span>Community-focused</span><span>Evidence-led</span><span>Non-commercial</span><span>Australia-based initiative</span>
+          <span>Responsible giving</span>
+          <span>Community-focused</span>
+          <span>Evidence-led</span>
+          <span>Non-commercial</span>
+          <span>Australia-based initiative</span>
         </div>
       </div>
     </section>
 
-    <section class="section" id="mission">
+    <section class="section reveal" id="mission">
       <div class="container two">
         <div>
           <div class="kicker">Our mission</div>
@@ -263,20 +567,23 @@
             The humanitarian foundation is intended to operate separately from HSKRC's research activities,
             with dedicated governance, financial records and project reporting.
           </p>
-          <div class="missionCard">
-            <b>Important pre-launch commitment</b>
-            We will not present the organisation as a registered charity, accept public donations, or claim tax-deductibility
-            until the relevant registration and compliance requirements are formally completed.
+          <div class="missionCallout">
+            <b>Pre-launch commitment</b>
+            We will not present the organisation as a registered charity, accept public donations,
+            or claim tax-deductibility until the relevant registration and compliance requirements are formally completed.
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="programs">
+    <section class="section reveal" id="programs">
       <div class="container">
         <div class="sectionHead">
-          <div><div class="kicker">Planned programs</div><h2>Focused support. Measurable outcomes.</h2></div>
-          <p>Initial projects will be activated only after legal, banking, governance and compliance arrangements are in place.</p>
+          <div>
+            <div class="kicker">Planned programs</div>
+            <h2>Focused support. Measurable outcomes.</h2>
+          </div>
+          <p>Programs will be activated only after legal, banking, governance and compliance arrangements are in place.</p>
         </div>
 
         <div class="cards">
@@ -286,18 +593,21 @@
             <p>Targeted food packages, winter essentials and urgent household support for vulnerable families.</p>
             <span class="meta">Planned program</span>
           </article>
+
           <article class="card">
             <div class="num">02 • EDUCATION</div>
             <h3>Education Support</h3>
             <p>School supplies, learning resources and practical educational assistance for children and students.</p>
             <span class="meta">Planned program</span>
           </article>
+
           <article class="card">
             <div class="num">03 • ESSENTIAL NEEDS</div>
             <h3>Household Assistance</h3>
             <p>Small-scale support for urgent needs identified through documented local assessments and clear eligibility criteria.</p>
             <span class="meta">Planned program</span>
           </article>
+
           <article class="card">
             <div class="num">04 • EMERGENCY</div>
             <h3>Emergency Response</h3>
@@ -308,11 +618,14 @@
       </div>
     </section>
 
-    <section class="section" id="transparency">
+    <section class="section reveal" id="transparency">
       <div class="container">
         <div class="sectionHead">
-          <div><div class="kicker">Transparency framework</div><h2>Trust should be visible.</h2></div>
-          <p>Project evidence should be public enough to verify delivery, while protecting the privacy and dignity of beneficiaries.</p>
+          <div>
+            <div class="kicker">Transparency framework</div>
+            <h2>Trust should be visible.</h2>
+          </div>
+          <p>Project evidence should be public enough to verify delivery while protecting the privacy and dignity of beneficiaries.</p>
         </div>
 
         <div class="flow">
@@ -333,11 +646,14 @@
       </div>
     </section>
 
-    <section class="section" id="governance">
+    <section class="section reveal" id="governance">
       <div class="container">
         <div class="sectionHead">
-          <div><div class="kicker">Governance</div><h2>Built to separate good intentions from good systems.</h2></div>
-          <p>Responsible humanitarian work needs clear roles, records, controls and compliance — not only fundraising.</p>
+          <div>
+            <div class="kicker">Governance</div>
+            <h2>Good intentions need good systems.</h2>
+          </div>
+          <p>Responsible humanitarian work requires clear roles, records, financial controls and compliance from the beginning.</p>
         </div>
 
         <div class="governance">
@@ -351,6 +667,7 @@
               <div class="check"><i>✓</i><span>Conflict-of-interest and record-keeping processes</span></div>
             </div>
           </div>
+
           <div class="govCard">
             <h3>Beneficiary protection</h3>
             <p>Transparency must never require unnecessary exposure of vulnerable people.</p>
@@ -365,7 +682,7 @@
       </div>
     </section>
 
-    <section class="section" id="support">
+    <section class="section reveal" id="support">
       <div class="container supportShell">
         <div>
           <div class="kicker">Support</div>
@@ -376,6 +693,7 @@
             and project-specific funding information will be published here.
           </p>
         </div>
+
         <div class="launch">
           <span class="badge">Pre-launch</span>
           <h3>Join the launch list</h3>
@@ -390,7 +708,7 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section reveal" id="contact">
       <div class="container contactGrid">
         <div>
           <div class="kicker">Contact</div>
@@ -408,9 +726,21 @@
 
   <footer>
     <div class="container footerGrid">
-      <div class="brand"><span class="mark">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></div>
+      <div class="brand">
+        <span class="brandmark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M6 6v20M26 6v20M7 16h18" stroke="url(#gf)" stroke-width="3.4" stroke-linecap="round"/>
+            <defs><linearGradient id="gf" x1="6" y1="6" x2="27" y2="27"><stop stop-color="#39d5ff"/><stop offset="1" stop-color="#5be7c4"/></linearGradient></defs>
+          </svg>
+        </span>
+        <span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span>
+      </div>
       <p>© <span id="year"></span> HSKRC Humanitarian Foundation • Pre-launch website</p>
-      <div class="footlinks"><a href="#transparency">Transparency</a><a href="#contact">Contact</a><a href="#top">Back to top ↑</a></div>
+      <div class="footlinks">
+        <a href="#transparency">Transparency</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
 
@@ -444,6 +774,16 @@
     });
 
     document.querySelector('#year').textContent=new Date().getFullYear();
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>
