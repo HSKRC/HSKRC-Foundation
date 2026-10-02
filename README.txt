@@ -1,0 +1,1 @@
+HSKRC Humanitarian Foundation website concept. Open index.html in a browser. The site is intentionally pre-launch: it does not claim registered-charity status and does not collect donations yet. Suggested production domain: foundation.hskrc.org.
