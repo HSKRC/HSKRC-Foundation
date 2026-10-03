@@ -16,8 +16,8 @@ function fieldHtml(field,value){
 }
 function renderRow(rec){
   const tr=document.createElement("tr"); tr.dataset.id=rec.id;
-  tr.innerHTML=cfg.fields.map(f=>'<td>'+fieldHtml(f,rec[f.key])+'</td>').join("")+'<td class="no-print"><button class="remove" type="button">×</button></td>';
-  tr.querySelector(".remove").addEventListener("click",()=>removeRecord(rec.id));
+  tr.innerHTML=cfg.fields.map(f=>'<td>'+fieldHtml(f,rec[f.key])+'</td>').join("")+(cfg.allowDelete===false?'<td class="no-print">—</td>':'<td class="no-print"><button class="remove" type="button">×</button></td>');
+  const removeButton=tr.querySelector(".remove"); if(removeButton) removeButton.addEventListener("click",()=>removeRecord(rec.id));
   tr.querySelectorAll("[data-col]").forEach(el=>{
     if(el.disabled||el.readOnly)return;
     const event=el.tagName==="SELECT"||el.type==="date"||el.type==="number"||el.type==="checkbox"?"change":"input";
