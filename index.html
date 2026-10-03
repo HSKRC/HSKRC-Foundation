@@ -37,15 +37,23 @@
     .topbar b{color:#fff}
 
     .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-    .navwrap{height:82px;display:flex;align-items:center;gap:24px}
+    .navwrap{height:82px;display:flex;align-items:center;gap:18px}
     .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
     .mark{width:46px;height:46px;border:2px solid var(--red);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;font-size:1.25rem;color:var(--red)}
     .brand strong{display:block;letter-spacing:.15em;font-size:.88rem}
     .brand small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}
-    .nav{margin-left:auto;display:flex;align-items:center;gap:22px}
-    .nav a{font-size:.88rem;color:#444}
-    .nav a:hover{color:var(--red)}
-    .donateLink{padding:11px 15px;border:1px solid var(--red);color:var(--red)!important}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:15px;white-space:nowrap}
+    .nav>a,.navGroup>summary{font-size:.86rem;color:#444}
+    .nav>a:hover,.navGroup>summary:hover{color:var(--red)}
+    .navGroup{position:relative}
+    .navGroup>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:5px}
+    .navGroup>summary::-webkit-details-marker{display:none}
+    .navGroup>summary:after{content:"⌄";font-size:.72rem;transition:transform .18s ease}
+    .navGroup[open]>summary:after{transform:rotate(180deg)}
+    .navPanel{position:absolute;top:calc(100% + 22px);right:0;width:230px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:10px;display:grid;gap:2px;z-index:80}
+    .navPanel a{display:block;padding:10px 11px;font-size:.84rem;color:#444}
+    .navPanel a:hover{background:var(--red-soft);color:var(--red)}
+    .donateLink{padding:10px 14px;border:1px solid var(--red);color:var(--red)!important}
     .menu{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;width:42px;height:42px;cursor:pointer}
 
     .hero{padding:0 0 34px}
@@ -109,7 +117,8 @@
     .trackStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .trackStats div{background:#fff;border:1px solid var(--line);padding:14px}
     .trackStats b{display:block}
-    .trackStats span{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}\n    .reportLink{display:inline-block;margin-top:16px;color:var(--red);font-weight:800;border-bottom:1px solid var(--red);padding-bottom:2px}
+    .trackStats span{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}
+    .reportLink{display:inline-block;margin-top:16px;color:var(--red);font-weight:800;border-bottom:1px solid var(--red);padding-bottom:2px}
 
     .transparency{background:#171717;color:#fff}
     .transparency .muted{color:#b9b9b9}
@@ -145,9 +154,16 @@
     .footerGrid p{color:#aaa;font-size:.8rem}
     .footerLinks{display:flex;gap:16px;justify-content:flex-end;flex-wrap:wrap;font-size:.8rem}
 
-    @media(max-width:960px){
-      .nav{display:none;position:absolute;top:82px;left:20px;right:20px;background:#fff;border:1px solid var(--line);padding:18px;flex-direction:column;align-items:stretch}
+    @media(max-width:1120px){
+      .nav{display:none;position:absolute;top:82px;left:20px;right:20px;background:#fff;border:1px solid var(--line);padding:18px;flex-direction:column;align-items:stretch;gap:4px;white-space:normal;box-shadow:var(--shadow)}
       .nav.open{display:flex}.menu{display:block}
+      .nav>a,.navGroup>summary{padding:10px 8px;font-size:.92rem}
+      .navGroup{width:100%}
+      .navGroup>summary{justify-content:space-between}
+      .navPanel{position:static;width:100%;border:0;border-left:2px solid var(--red-soft);box-shadow:none;padding:4px 0 4px 12px;margin:2px 0 6px}
+      .navPanel a{padding:9px 8px}
+      .donateLink{text-align:center;margin-top:6px}
+
       .featureGrid,.missionGrid,.trackWrap,.latestGrid,.supportGrid,.contactGrid{grid-template-columns:1fr}
       .featureMain{min-height:500px}.featureStack{grid-template-columns:1fr 1fr}.featureSmall{min-height:280px}
       .stats{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.footerGrid{grid-template-columns:1fr}.footerLinks{justify-content:flex-start}
@@ -183,13 +199,22 @@
       <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="nav">
         <a href="#mission">About</a>
-        <a href="mission.html">Mission & Objectives</a>
-        <a href="governance.html">Governance</a><a href="policies.html">Policies</a><a href="templates.html">Templates</a><a href="registers.html">Registers</a>
         <a href="#areas">What We Do</a>
         <a href="#track">Track Funds</a>
         <a href="governance.html#transparency">Transparency</a>
-        <a href="#latest">Latest</a>
-        <a href="#contact">Contact</a><a href="complaints.html">Raise a concern</a>
+        <details class="navGroup">
+          <summary>Governance</summary>
+          <div class="navPanel">
+            <a href="mission.html">Mission & Objectives</a>
+            <a href="governance.html">Governance</a>
+            <a href="policies.html">Policies</a>
+            <a href="templates.html">Templates</a>
+            <a href="registers.html">Registers</a>
+            <a href="#latest">Latest updates</a>
+            <a href="complaints.html">Raise a concern</a>
+          </div>
+        </details>
+        <a href="#contact">Contact</a>
         <a class="donateLink" href="#support">Support</a>
       </nav>
     </div>
@@ -425,7 +450,16 @@
       const open=nav.classList.toggle('open');
       menu.setAttribute('aria-expanded',String(open));
     });
-    document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+    document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{
+      nav.classList.remove('open');
+      document.querySelectorAll('.navGroup[open]').forEach(group=>group.removeAttribute('open'));
+      menu.setAttribute('aria-expanded','false');
+    }));
+    document.addEventListener('click',e=>{
+      document.querySelectorAll('.navGroup[open]').forEach(group=>{
+        if(!group.contains(e.target)) group.removeAttribute('open');
+      });
+    });
 
     const trackerForm=document.querySelector('#trackerForm');
     const trackerEmpty=document.querySelector('#trackerEmpty');
@@ -436,7 +470,8 @@
     const trackerCode=projectResult.querySelector('small');
     const trackerBadge=projectResult.querySelector('.status');
     const trackerValues=projectResult.querySelectorAll('.trackStats b');
-    const trackerNote=projectResult.querySelector('p.muted');\n    const trackerReportLink=document.querySelector('#trackerReportLink');
+    const trackerNote=projectResult.querySelector('p.muted');
+    const trackerReportLink=document.querySelector('#trackerReportLink');
     const publicProjectDb=window.supabase.createClient(
       'https://uwuklryzxexpofcxrbnm.supabase.co',
       'sb_publishable_pC4zCrTiZLb0hW0oXqt0tg_i1vjIoW2',
@@ -458,7 +493,8 @@
       projectResult.classList.add('show');
       trackerCode.textContent=p.project_code;
       trackerTitle.textContent=p.title||'Public project';
-      trackerBadge.textContent=isDemo?'DEMO RECORD':'PUBLIC PROJECT';\n      trackerReportLink.href='project-report.html?code='+encodeURIComponent(p.project_code);
+      trackerBadge.textContent=isDemo?'DEMO RECORD':'PUBLIC PROJECT';
+      trackerReportLink.href='project-report.html?code='+encodeURIComponent(p.project_code);
       trackerValues[0].textContent=money(p.verified_funds_received,p.currency);
       trackerValues[1].textContent=money(p.verified_project_spending,p.currency);
       trackerValues[2].textContent=p.status||'Published';
