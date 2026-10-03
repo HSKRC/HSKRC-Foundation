@@ -164,6 +164,7 @@
       .section{padding:72px 0}
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="topbar">
@@ -314,7 +315,7 @@
         <div class="trackIntro">
           <div class="eyebrow">Track funds</div>
           <h2>See where a project stands.</h2>
-          <p>Future public projects can be assigned a tracking code so donors and visitors can view verified financial summaries and delivery status.</p>
+          <p>Approved public projects can be searched by tracking code to view a privacy-safe status and verified financial summary.</p>
           <span class="demoCode">Demo: HSKRC-DEMO-001</span>
         </div>
 
@@ -325,7 +326,7 @@
           </form>
 
           <div class="trackerResult">
-            <div class="empty" id="trackerEmpty">Enter the demo code above to test the tracker.</div>
+            <div class="empty" id="trackerEmpty">Enter a public project code. Demo: HSKRC-DEMO-001</div>
             <div class="result" id="projectResult">
               <div class="resultTop">
                 <div><small class="muted">HSKRC-DEMO-001</small><h3>Demo — Winter Relief Project</h3></div>
@@ -431,25 +432,82 @@
     const projectResult=document.querySelector('#projectResult');
     const projectCode=document.querySelector('#projectCode');
     const progressBar=document.querySelector('#progressBar');
+    const trackerTitle=projectResult.querySelector('h3');
+    const trackerCode=projectResult.querySelector('small');
+    const trackerBadge=projectResult.querySelector('.status');
+    const trackerValues=projectResult.querySelectorAll('.trackStats b');
+    const trackerNote=projectResult.querySelector('p.muted');
+    const publicProjectDb=window.supabase.createClient(
+      'https://uwuklryzxexpofcxrbnm.supabase.co',
+      'sb_publishable_pC4zCrTiZLb0hW0oXqt0tg_i1vjIoW2',
+      {auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}}
+    );
 
-    trackerForm.addEventListener('submit',e=>{
+    function hideTracker(message){
+      projectResult.classList.remove('show');
+      progressBar.style.width='0';
+      trackerEmpty.style.display='flex';
+      trackerEmpty.textContent=message;
+    }
+    function money(value,currency){
+      if(value===null||value===undefined||value==='') return '—';
+      return (currency||'AUD')+' '+Number(value).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+    function showProject(p,isDemo=false){
+      trackerEmpty.style.display='none';
+      projectResult.classList.add('show');
+      trackerCode.textContent=p.project_code;
+      trackerTitle.textContent=p.title||'Public project';
+      trackerBadge.textContent=isDemo?'DEMO RECORD':'PUBLIC PROJECT';
+      trackerValues[0].textContent=money(p.verified_funds_received,p.currency);
+      trackerValues[1].textContent=money(p.verified_project_spending,p.currency);
+      trackerValues[2].textContent=p.status||'Published';
+      const budget=Number(p.budget)||0;
+      const received=Number(p.verified_funds_received)||0;
+      const progress=budget>0?Math.min(100,Math.max(0,(received/budget)*100)):0;
+      requestAnimationFrame(()=>progressBar.style.width=progress+'%');
+      if(isDemo){
+        trackerNote.textContent='Demo only — this does not represent real funds or a real campaign.';
+      }else{
+        const updated=p.updated_at?new Date(p.updated_at).toLocaleDateString():null;
+        trackerNote.textContent=(p.public_summary||'Public project record.')+(updated?' • Updated '+updated:'')+' • Pre-launch transparency record; this is not a donation request.';
+      }
+    }
+
+    trackerForm.addEventListener('submit',async e=>{
       e.preventDefault();
       const code=projectCode.value.trim().toUpperCase();
-      if(code==='HSKRC-DEMO-001'){
-        trackerEmpty.style.display='none';
-        projectResult.classList.add('show');
-        requestAnimationFrame(()=>progressBar.style.width='12%');
-      }else if(!code){
-        projectResult.classList.remove('show');
-        progressBar.style.width='0';
-        trackerEmpty.style.display='flex';
-        trackerEmpty.textContent='Enter a project code. Demo: HSKRC-DEMO-001';
-      }else{
-        projectResult.classList.remove('show');
-        progressBar.style.width='0';
-        trackerEmpty.style.display='flex';
-        trackerEmpty.textContent='No public project found. Check the code and try again.';
+      if(!code){
+        hideTracker('Enter a public project code. Demo: HSKRC-DEMO-001');
+        return;
       }
+      if(code==='HSKRC-DEMO-001'){
+        showProject({
+          project_code:'HSKRC-DEMO-001',
+          title:'Demo — Winter Relief Project',
+          verified_funds_received:0,
+          verified_project_spending:0,
+          budget:0,
+          currency:'AUD',
+          status:'Pre-launch'
+        },true);
+        return;
+      }
+      trackerEmpty.style.display='flex';
+      trackerEmpty.textContent='Checking public project record…';
+      projectResult.classList.remove('show');
+      const {data,error}=await publicProjectDb.rpc('get_foundation_public_project',{lookup_code:code});
+      if(error){
+        console.error(error);
+        hideTracker('Project lookup is temporarily unavailable. Please try again.');
+        return;
+      }
+      const p=Array.isArray(data)?data[0]:data;
+      if(!p){
+        hideTracker('No approved public project found for this code.');
+        return;
+      }
+      showProject(p,false);
     });
 
     document.querySelector('#year').textContent=new Date().getFullYear();
