@@ -8,17 +8,19 @@ let saveTimers=new Map();
 function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function fieldHtml(field,value){
   const val=value??""; const a='data-col="'+field.key+'"';
-  if(field.type==="select") return '<select '+a+'>'+field.options.map(o=>'<option'+(String(o)===String(val)?' selected':'')+'>'+esc(o)+'</option>').join("")+'</select>';
-  if(field.type==="textarea") return '<textarea '+a+'>'+esc(val)+'</textarea>';
+  if(field.type==="select") return '<select '+a+(field.readonly?' disabled':'')+'>'+field.options.map(o=>'<option'+(String(o)===String(val)?' selected':'')+'>'+esc(o)+'</option>').join("")+'</select>';
+  if(field.type==="textarea") return '<textarea '+a+(field.readonly?' readonly':'')+'>'+esc(val)+'</textarea>';
+  if(field.type==="checkbox") return '<input '+a+' type="checkbox"'+(val===true||val==="true"?' checked':'')+(field.readonly?' disabled':'')+'>';
   const type=field.type||"text"; const extra=type==="number"?' step="0.01" min="0"':"";
-  return '<input '+a+' type="'+type+'" value="'+esc(val)+'"'+extra+'>';
+  return '<input '+a+' type="'+type+'" value="'+esc(val)+'"'+extra+(field.readonly?' readonly':'')+'>';
 }
 function renderRow(rec){
   const tr=document.createElement("tr"); tr.dataset.id=rec.id;
   tr.innerHTML=cfg.fields.map(f=>'<td>'+fieldHtml(f,rec[f.key])+'</td>').join("")+'<td class="no-print"><button class="remove" type="button">×</button></td>';
   tr.querySelector(".remove").addEventListener("click",()=>removeRecord(rec.id));
   tr.querySelectorAll("[data-col]").forEach(el=>{
-    const event=el.tagName==="SELECT"||el.type==="date"||el.type==="number"?"change":"input";
+    if(el.disabled||el.readOnly)return;
+    const event=el.tagName==="SELECT"||el.type==="date"||el.type==="number"||el.type==="checkbox"?"change":"input";
     el.addEventListener(event,()=>scheduleSave(tr,rec.id));
   });
   document.querySelector("#rows").appendChild(tr);
@@ -26,7 +28,7 @@ function renderRow(rec){
 function rowPayload(tr){
   const payload={};
   cfg.fields.forEach(f=>{
-    const el=tr.querySelector('[data-col="'+f.key+'"]'); let v=el?el.value:"";
+    const el=tr.querySelector('[data-col="'+f.key+'"]'); let v=el?(f.type==="checkbox"?el.checked:el.value):"";
     if(f.type==="number") v=v===""?null:Number(v);
     if(f.type==="date") v=v||null;
     payload[f.key]=v===""?null:v;
