@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /registers.html
+Disallow: /project-register.html
+Disallow: /project-editor.html
+Disallow: /risk-register.html
+Disallow: /conflict-register.html
+Disallow: /transactions.html
+Disallow: /evidence.html
+Disallow: /partners.html
+Disallow: /complaints-admin.html
+Disallow: /audit-log.html
+Disallow: /backup.html
+Disallow: /templates.html
+Disallow: /project-proposal-template.html
+Disallow: /budget-template.html
+Disallow: /completion-report-template.html
+
+Sitemap: https://foundation.hskrc.org/sitemap.xml
