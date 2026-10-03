@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conflict Register | HSKRC Humanitarian Foundation</title>
+<style>
+:root{--ink:#171717;--muted:#666;--line:#d8d8d8;--soft:#f5f5f5;--red:#8f1d2c;--redsoft:#f7eef0;--max:1220px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.55}a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 38px));margin:auto}
+.top{background:#111;color:#eee;font-size:.78rem}.top .container{min-height:34px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.nav{height:78px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.mark{width:44px;height:44px;border:2px solid var(--red);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;color:var(--red)}.brand strong{display:block;letter-spacing:.14em;font-size:.86rem}.brand small{display:block;color:var(--muted);font-size:.67rem}.links{margin-left:auto;display:flex;gap:17px;font-size:.84rem;color:#444}.links a:hover{color:var(--red)}
+.hero{padding:70px 0 48px;border-bottom:1px solid var(--line)}.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}h1,h2,h3,p{margin-top:0}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.8rem,6vw,5.6rem);line-height:.98;letter-spacing:-.045em;margin:12px 0 18px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.035em}.lead{max-width:850px;color:#494949;font-size:1.08rem}
+.notice{padding:16px 18px;background:var(--redsoft);border-left:4px solid var(--red);color:#4d3338;margin:22px 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:48px 0 70px}.card{border:1px solid var(--line);padding:24px;min-height:240px}.card small{display:block;color:var(--red);font-weight:800;margin-bottom:28px}.card h2{font-size:1.65rem}.card p{color:var(--muted)}.card a{display:inline-block;margin-top:12px;color:var(--red);font-weight:800;border-bottom:1px solid var(--red)}
+.toolbar{position:sticky;top:78px;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:11px 0}.toolbar .container{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid #bbb;background:#fff;padding:9px 12px;font-weight:700;cursor:pointer}.btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.register{padding:34px 0 70px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}.metric{border:1px solid var(--line);padding:16px}.metric b{display:block;font-family:Georgia,serif;font-size:2rem}.metric span{color:var(--muted);font-size:.78rem}
+.tablewrap{overflow:auto;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1220px}th,td{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:7px;vertical-align:top}th{background:#efefef;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0}td:last-child,th:last-child{border-right:0}
+td input,td select,td textarea{width:100%;border:0;background:transparent;padding:7px;font:inherit;min-width:95px}td textarea{min-height:70px;resize:vertical}td input:focus,td select:focus,td textarea:focus{outline:1px solid var(--red);background:#fff}
+.remove{border:1px solid #bbb;background:#fff;padding:6px 9px;cursor:pointer}.badge{display:inline-block;padding:5px 8px;border:1px solid #bbb;font-size:.72rem}.footnote{color:var(--muted);font-size:.8rem;margin-top:12px}
+footer{background:#111;color:#eee;padding:34px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot p{margin:0;color:#aaa;font-size:.8rem}
+@media(max-width:850px){.links{display:none}.cards,.summary{grid-template-columns:1fr}.foot{flex-direction:column;align-items:flex-start}}
+@media print{.top,header,.toolbar,footer,.no-print{display:none!important}.hero{padding:0 0 18px}.register{padding:16px 0}.container{width:100%;max-width:none}.tablewrap{overflow:visible;border:0}table{min-width:0;font-size:9px}th,td{padding:4px}.summary{grid-template-columns:repeat(4,1fr)}}
+</style></head><body><div class="top"><div class="container"><span><b>HSKRC Humanitarian Foundation</b> — Draft governance register</span><span>Pre-launch • October 2026</span></div></div>
+<header><div class="container nav"><a class="brand" href="index.html"><span class="mark">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></a><nav class="links"><a href="index.html">Home</a><a href="governance.html">Governance</a><a href="policies.html">Policies</a><a href="templates.html">Templates</a><a href="registers.html">Registers</a></nav></div></header>
+<section class="hero"><div class="container"><div class="eyebrow">Register 03</div><h1>Conflict of Interest Register</h1><p class="lead">Document declared interests and how the organisation manages actual, potential or perceived conflicts in humanitarian and governance decisions.</p><div class="notice"><b>Governance note:</b> the register should record enough information to show how a conflict was managed without publishing unnecessary private information.</div></div></section>
+<div class="toolbar"><div class="container"><button class="btn primary" onclick="addRow()">Add conflict</button><button class="btn" onclick="exportCSV()">Export CSV</button><button class="btn" onclick="importCSV()">Import CSV</button><button class="btn" onclick="window.print()">Print / Save PDF</button><button class="btn" onclick="clearAll()">Clear register</button><span id="saved" style="align-self:center;color:#666;font-size:.78rem"></span><input id="importFile" type="file" accept=".csv,text/csv" hidden onchange="handleImport(this)"></div></div>
+<main class="register"><div class="container"><div class="summary"><div class="metric"><b id="mTotal">0</b><span>Total declarations</span></div><div class="metric"><b id="mOpen">0</b><span>Open / monitoring</span></div><div class="metric"><b id="mRecused">0</b><span>Recusals recorded</span></div><div class="metric"><b id="mRelated">0</b><span>Related-party matters</span></div></div>
+<div class="tablewrap"><table><thead><tr><th>Conflict ID</th><th>Date declared</th><th>Person / role</th><th>Type of interest</th><th>Matter affected</th><th>Description</th><th>Management action</th><th>Recused?</th><th>Decision by</th><th>Review / closure date</th><th>Status</th><th>Notes</th><th class="no-print">Remove</th></tr></thead><tbody id="rows"></tbody></table></div><p class="footnote">A declaration is not automatically evidence of wrongdoing. The purpose of this register is to make relevant interests visible and document the management response.</p></div></main><footer><div class="container foot"><div class="brand"><span class="mark" style="border-color:#fff;color:#fff">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></div><p>Draft operational register • Local browser storage only</p></div></footer>
+<script>
+function addRow(d={},autosave=true){
+ const tr=document.createElement('tr');
+ tr.innerHTML='<td><input data-k="Conflict ID" value="'+esc(d["Conflict ID"])+'" placeholder="COI-001"></td>'+
+ '<td><input data-k="Date Declared" type="date" value="'+esc(d["Date Declared"])+'"></td>'+
+ '<td><input data-k="Person / Role" value="'+esc(d["Person / Role"])+'"></td>'+
+ '<td><select data-k="Type of Interest"><option></option><option>Personal / family</option><option>Financial</option><option>Business / professional</option><option>Related-party transaction</option><option>Gift / hospitality</option><option>Beneficiary relationship</option><option>Other</option></select></td>'+
+ '<td><textarea data-k="Matter / Decision Affected">'+esc(d["Matter / Decision Affected"])+'</textarea></td>'+
+ '<td><textarea data-k="Description">'+esc(d["Description"])+'</textarea></td>'+
+ '<td><textarea data-k="Management Action">'+esc(d["Management Action"])+'</textarea></td>'+
+ '<td><select data-k="Recused?"><option>No</option><option>Yes</option><option>Not required</option></select></td>'+
+ '<td><input data-k="Decision By" value="'+esc(d["Decision By"])+'"></td>'+
+ '<td><input data-k="Review / Closure Date" type="date" value="'+esc(d["Review / Closure Date"])+'"></td>'+
+ '<td><select data-k="Status"><option>Open</option><option>Monitoring</option><option>Managed</option><option>Closed</option></select></td>'+
+ '<td><textarea data-k="Notes">'+esc(d["Notes"])+'</textarea></td>'+
+ '<td class="no-print"><button class="remove" onclick="removeRow(this)">×</button></td>';
+ document.getElementById('rows').appendChild(tr);
+ ["Type of Interest","Recused?","Status"].forEach(k=>{const e=tr.querySelector('[data-k="'+k+'"]');if(d[k])e.value=d[k]});
+ if(autosave)save();
+}
+</script><script>
+const STORAGE_KEY='hskrc_foundation_conflict_register_v1';
+function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function save(){
+  const rows=[];
+  document.querySelectorAll('#rows tr').forEach(tr=>{
+    const obj={};
+    tr.querySelectorAll('[data-k]').forEach(el=>obj[el.dataset.k]=el.type==='checkbox'?el.checked:el.value);
+    rows.push(obj);
+  });
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(rows));
+  updateSummary();
+  document.getElementById('saved').textContent='Saved locally • '+new Date().toLocaleTimeString();
+}
+function load(){
+  let rows=[];
+  try{rows=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){}
+  if(!rows.length){addRow();return}
+  rows.forEach(r=>addRow(r,false));
+  updateSummary();
+}
+function clearAll(){
+  if(!confirm('Clear all rows in this register on this browser?')) return;
+  localStorage.removeItem(STORAGE_KEY);document.getElementById('rows').innerHTML='';addRow();save();
+}
+function removeRow(btn){btn.closest('tr').remove();if(!document.querySelector('#rows tr'))addRow();save()}
+function csvCell(v){v=String(v==null?'':v).replace(/"/g,'""');return '"'+v+'"'}
+function exportCSV(){
+  const headers=["Conflict ID","Date Declared","Person / Role","Type of Interest","Matter / Decision Affected","Description","Management Action","Recused?","Decision By","Review / Closure Date","Status","Notes"];
+  const data=[headers];
+  document.querySelectorAll('#rows tr').forEach(tr=>{
+    const row=[];tr.querySelectorAll('[data-k]').forEach(el=>row.push(el.type==='checkbox'?(el.checked?'Yes':'No'):el.value));data.push(row);
+  });
+  const csv=data.map(r=>r.map(csvCell).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=STORAGE_KEY+'.csv';a.click();URL.revokeObjectURL(url);
+}
+function importCSV(){document.getElementById('importFile').click()}
+function parseCSVLine(line){const out=[];let cur='',q=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){if(q&&line[i+1]==='"'){cur+='"';i++}else q=!q}else if(ch===','&&!q){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out}
+function handleImport(input){
+  const f=input.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{
+    const lines=String(reader.result).split(/\r?\n/).filter(Boolean);if(lines.length<2)return alert('No data rows found.');
+    const headers=parseCSVLine(lines[0]);document.getElementById('rows').innerHTML='';
+    for(let i=1;i<lines.length;i++){const vals=parseCSVLine(lines[i]);const obj={};headers.forEach((h,j)=>obj[h]=vals[j]||'');addRow(obj,false)}
+    save();
+  };reader.readAsText(f);input.value='';
+}
+function updateSummary(){const rs=[...document.querySelectorAll('#rows tr')];document.getElementById('mTotal').textContent=rs.length;document.getElementById('mOpen').textContent=rs.filter(r=>{const e=r.querySelector('[data-k="Status"]');return e&&e.value!=='Closed'}).length;document.getElementById('mRecused').textContent=rs.filter(r=>{const e=r.querySelector('[data-k="Recused?"]');return e&&e.value==='Yes'}).length;document.getElementById('mRelated').textContent=rs.filter(r=>{const e=r.querySelector('[data-k="Type of Interest"]');return e&&e.value==='Related-party transaction'}).length;}
+document.addEventListener('input',e=>{if(e.target.matches('[data-k]'))save()});document.addEventListener('change',e=>{if(e.target.matches('[data-k]'))save()});
+window.addEventListener('DOMContentLoaded',load);
+</script></body></html>
