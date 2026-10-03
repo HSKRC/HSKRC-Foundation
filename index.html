@@ -109,7 +109,7 @@
     .trackStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .trackStats div{background:#fff;border:1px solid var(--line);padding:14px}
     .trackStats b{display:block}
-    .trackStats span{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}
+    .trackStats span{display:block;color:var(--muted);font-size:.75rem;margin-top:4px}\n    .reportLink{display:inline-block;margin-top:16px;color:var(--red);font-weight:800;border-bottom:1px solid var(--red);padding-bottom:2px}
 
     .transparency{background:#171717;color:#fff}
     .transparency .muted{color:#b9b9b9}
@@ -338,7 +338,7 @@
                 <div><b>AUD 0</b><span>Verified project spending</span></div>
                 <div><b>Pre-launch</b><span>Current stage</span></div>
               </div>
-              <p class="muted" style="margin:14px 0 0;font-size:.8rem">Demo only — this does not represent real funds or a real campaign.</p>
+              <p class="muted" style="margin:14px 0 0;font-size:.8rem">Demo only — this does not represent real funds or a real campaign.</p><a id="trackerReportLink" class="reportLink" href="project-report.html?code=HSKRC-DEMO-001">View full project report →</a>
             </div>
           </div>
         </div>
@@ -436,7 +436,7 @@
     const trackerCode=projectResult.querySelector('small');
     const trackerBadge=projectResult.querySelector('.status');
     const trackerValues=projectResult.querySelectorAll('.trackStats b');
-    const trackerNote=projectResult.querySelector('p.muted');
+    const trackerNote=projectResult.querySelector('p.muted');\n    const trackerReportLink=document.querySelector('#trackerReportLink');
     const publicProjectDb=window.supabase.createClient(
       'https://uwuklryzxexpofcxrbnm.supabase.co',
       'sb_publishable_pC4zCrTiZLb0hW0oXqt0tg_i1vjIoW2',
@@ -458,7 +458,7 @@
       projectResult.classList.add('show');
       trackerCode.textContent=p.project_code;
       trackerTitle.textContent=p.title||'Public project';
-      trackerBadge.textContent=isDemo?'DEMO RECORD':'PUBLIC PROJECT';
+      trackerBadge.textContent=isDemo?'DEMO RECORD':'PUBLIC PROJECT';\n      trackerReportLink.href='project-report.html?code='+encodeURIComponent(p.project_code);
       trackerValues[0].textContent=money(p.verified_funds_received,p.currency);
       trackerValues[1].textContent=money(p.verified_project_spending,p.currency);
       trackerValues[2].textContent=p.status||'Published';
