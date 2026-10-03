@@ -19,4 +19,14 @@ Disallow: /completion-report-template.html
 
 Disallow: /readiness.html
 
+Disallow: /registration-roadmap.html
+
+Disallow: /meeting-minutes-template.html
+
+Disallow: /conflict-declaration-template.html
+
+Disallow: /partner-due-diligence-template.html
+
+Disallow: /expense-reimbursement-template.html
+
 Sitemap: https://foundation.hskrc.org/sitemap.xml
