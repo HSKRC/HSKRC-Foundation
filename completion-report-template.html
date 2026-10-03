@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project Completion Report | HSKRC Humanitarian Foundation</title>
+<style>
+:root{--ink:#161616;--muted:#666;--line:#d9d9d9;--soft:#f5f5f5;--red:#8f1d2c;--redsoft:#f7eef0;--max:1120px}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.55}a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 38px));margin:auto}
+.top{background:#111;color:#eee;font-size:.78rem}.top .container{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.nav{height:78px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:11px}.mark{width:44px;height:44px;border:2px solid var(--red);display:grid;place-items:center;font-family:Georgia,serif;color:var(--red);font-weight:700}.brand strong{display:block;letter-spacing:.14em;font-size:.86rem}.brand small{display:block;color:var(--muted);font-size:.67rem}.links{margin-left:auto;display:flex;gap:18px;font-size:.85rem;color:#444}.links a:hover{color:var(--red)}
+.hero{padding:70px 0 48px;border-bottom:1px solid var(--line)}.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}h1,h2,h3,p{margin-top:0}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.8rem,6vw,5.6rem);line-height:.98;letter-spacing:-.045em;margin:12px 0 18px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.035em}.lead{max-width:820px;color:#494949;font-size:1.08rem}
+.toolbar{position:sticky;top:78px;z-index:8;background:#fff;border-bottom:1px solid var(--line);padding:12px 0}.toolbar .container{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid #bbb;background:#fff;padding:10px 14px;cursor:pointer;font-weight:700}.btn.primary{background:var(--red);border-color:var(--red);color:#fff}.btn:hover{filter:brightness(.97)}
+.formwrap{padding:44px 0 80px}.notice{background:var(--redsoft);border-left:4px solid var(--red);padding:16px 18px;margin-bottom:26px;color:#4d3338}.section{margin:0 0 34px}.sectionhead{display:flex;justify-content:space-between;gap:20px;align-items:end;border-bottom:2px solid #111;padding-bottom:10px;margin-bottom:18px}.sectionhead h2{font-family:Georgia,serif;font-size:1.7rem;margin:0;letter-spacing:-.02em}.sectionhead span{font-size:.78rem;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.field{display:grid;gap:7px}.field label{font-size:.77rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#4b4b4b}.field input,.field textarea,.field select{width:100%;border:1px solid #bdbdbd;background:#fff;padding:12px;font:inherit;color:#111}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid rgba(143,29,44,.16);border-color:var(--red)}
+.full{grid-column:1/-1}.hint{font-size:.76rem;color:var(--muted);margin-top:2px}.checkgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.check{border:1px solid var(--line);padding:12px}.check label{display:flex;gap:9px;align-items:flex-start;font-size:.9rem}.signature{border-top:1px solid #999;margin-top:24px;padding-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #cfcfcf;padding:9px;text-align:left;vertical-align:top}th{background:#f0f0f0;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}td input,td textarea{width:100%;border:0;padding:6px;font:inherit;background:transparent}td input:focus,td textarea:focus{outline:1px solid var(--red)}.num{text-align:right}.totalbox{margin-top:16px;margin-left:auto;width:min(430px,100%);border:1px solid #bbb}.totalrow{display:flex;justify-content:space-between;gap:20px;padding:11px 14px;border-bottom:1px solid #ddd}.totalrow:last-child{border-bottom:0;font-weight:800;background:#f3f3f3}.smallbtn{border:1px solid #bbb;background:#fff;padding:6px 9px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);padding:24px;min-height:220px}.card small{display:block;color:var(--red);font-weight:800;margin-bottom:28px}.card h2{font-size:1.65rem}.card p{color:var(--muted)}.card a{display:inline-block;margin-top:12px;color:var(--red);font-weight:800;border-bottom:1px solid var(--red)}
+footer{background:#111;color:#eee;padding:34px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot p{margin:0;color:#aaa;font-size:.8rem}
+@media(max-width:820px){.links{display:none}.grid2,.grid3,.cards,.signature,.checkgrid{grid-template-columns:1fr}.toolbar{top:78px}.sectionhead{align-items:flex-start;flex-direction:column}}
+@media print{
+  .top,header,.toolbar,footer,.no-print{display:none!important}
+  .hero{padding:0 0 20px}.formwrap{padding:20px 0}.container{width:100%;max-width:none}.section{break-inside:avoid}.field input,.field textarea,.field select{border:1px solid #999!important}.notice{border:1px solid #bbb;background:#fff}.pagebreak{break-before:page}
+}
+</style></head><body><div class="top"><div class="container"><span><b>HSKRC Humanitarian Foundation</b> — Pre-launch operational template</span><span>Draft • October 2026</span></div></div>
+<header><div class="container nav"><a class="brand" href="index.html"><span class="mark">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></a><nav class="links"><a href="index.html">Home</a><a href="mission.html">Mission</a><a href="governance.html">Governance</a><a href="policies.html">Policies</a><a href="templates.html">Templates</a></nav></div></header>
+<section class="hero"><div class="container"><div class="eyebrow">Template 03</div><h1>Project Completion Report</h1><p class="lead">Complete after project delivery or closure to record results, reconcile funds, document limitations and prepare an evidence-based public summary.</p></div></section>
+<div class="toolbar"><div class="container"><button class="btn primary" onclick="window.print()">Print / Save PDF</button><button class="btn" onclick="clearForm()">Clear form</button><a class="btn" href="project-proposal-template.html">Proposal template</a><a class="btn" href="budget-template.html">Budget template</a></div></div>
+<main class="formwrap"><div class="container"><div class="notice"><b>Reporting rule:</b> record what actually happened. Do not convert estimates into facts, hide material problems, or publish sensitive beneficiary information merely to demonstrate transparency.</div>
+<section class="section"><div class="sectionhead"><h2>1. Project identity</h2><span>Closure record</span></div><div class="grid3">
+<div class="field"><label>Project code</label><input></div><div class="field"><label>Project title</label><input></div><div class="field"><label>Report date</label><input type="date"></div>
+<div class="field"><label>Project status</label><select><option>Completed</option><option>Partially completed</option><option>Cancelled</option><option>Paused</option></select></div><div class="field"><label>Actual start</label><input type="date"></div><div class="field"><label>Actual end</label><input type="date"></div>
+<div class="field"><label>Country / region</label><input></div><div class="field"><label>Report prepared by</label><input></div><div class="field"><label>Reviewed by</label><input></div>
+</div></section>
+<section class="section"><div class="sectionhead"><h2>2. What was delivered</h2><span>Actual outputs, not intentions</span></div><div class="grid2">
+<div class="field full"><label>Project purpose / original objective</label><textarea></textarea></div><div class="field"><label>Activities actually completed</label><textarea></textarea></div><div class="field"><label>Outputs / quantities delivered</label><textarea placeholder="Use verified quantities where available."></textarea></div>
+<div class="field"><label>Beneficiaries reached</label><textarea placeholder="Use aggregated counts and explain basis of verification."></textarea></div><div class="field"><label>Outcome observations</label><textarea placeholder="Distinguish observed outcomes from assumptions or anecdotal impressions."></textarea></div>
+</div></section>
+<section class="section"><div class="sectionhead"><h2>3. Variations and limitations</h2><span>Explain material differences</span></div><div class="grid2">
+<div class="field"><label>Changes from approved plan</label><textarea></textarea></div><div class="field"><label>Reason for changes</label><textarea></textarea></div>
+<div class="field"><label>Delays / implementation problems</label><textarea></textarea></div><div class="field"><label>Evidence limitations / uncertainty</label><textarea></textarea></div>
+</div></section>
+<section class="section pagebreak"><div class="sectionhead"><h2>4. Financial reconciliation</h2><span>Approved vs actual</span></div><div class="grid3">
+<div class="field"><label>Approved budget</label><input placeholder="AUD 0.00"></div><div class="field"><label>Verified funds received</label><input placeholder="AUD 0.00"></div><div class="field"><label>Actual expenditure</label><input placeholder="AUD 0.00"></div>
+<div class="field"><label>Remaining balance</label><input placeholder="AUD 0.00"></div><div class="field"><label>Returned / reallocated amount</label><input placeholder="AUD 0.00"></div><div class="field"><label>Financial records reconciled?</label><select><option>Yes</option><option>No</option><option>Partially</option></select></div>
+<div class="field full"><label>Explanation of material budget variances</label><textarea></textarea></div>
+</div></section>
+<section class="section"><div class="sectionhead"><h2>5. Evidence register</h2><span>Records supporting the report</span></div><div style="overflow:auto"><table><thead><tr><th>Evidence type</th><th>Description / reference</th><th>Held by / location</th><th>Public?</th></tr></thead><tbody>
+<tr><td><input placeholder="Receipt / invoice"></td><td><input></td><td><input></td><td><input placeholder="Yes / No / Redacted"></td></tr>
+<tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+</tbody></table></div></section>
+<section class="section"><div class="sectionhead"><h2>6. Safeguarding, privacy and complaints</h2><span>Close unresolved concerns</span></div><div class="grid2">
+<div class="field"><label>Safeguarding issues identified</label><textarea placeholder="Do not put unnecessary sensitive details in a public version."></textarea></div><div class="field"><label>Action taken / status</label><textarea></textarea></div>
+<div class="field"><label>Complaints or concerns received</label><textarea></textarea></div><div class="field"><label>Privacy incidents or data concerns</label><textarea></textarea></div>
+</div></section>
+<section class="section"><div class="sectionhead"><h2>7. Lessons and follow-up</h2><span>Improve the next project</span></div><div class="grid2">
+<div class="field"><label>What worked well</label><textarea></textarea></div><div class="field"><label>What should change next time</label><textarea></textarea></div>
+<div class="field"><label>Outstanding actions</label><textarea></textarea></div><div class="field"><label>Recommended follow-up</label><textarea></textarea></div>
+</div></section>
+<section class="section"><div class="sectionhead"><h2>8. Public summary</h2><span>Publishable, privacy-preserving version</span></div><div class="field"><label>Public project completion summary</label><textarea style="min-height:210px" placeholder="Summarise purpose, funds, expenditure, delivery, results and material limitations without publishing unnecessary personal information."></textarea></div></section>
+<section class="section"><div class="sectionhead"><h2>9. Closure approval</h2><span>Final governance review</span></div><div class="checkgrid">
+<div class="check"><label><input type="checkbox"> Expenditure reconciled</label></div><div class="check"><label><input type="checkbox"> Evidence register reviewed</label></div><div class="check"><label><input type="checkbox"> Safeguarding / complaints reviewed</label></div><div class="check"><label><input type="checkbox"> Public summary cleared for publication</label></div></div>
+<div class="signature"><div class="field"><label>Prepared by</label><input></div><div class="field"><label>Reviewed / approved by</label><input></div><div class="field"><label>Closure date</label><input type="date"></div></div></section>
+</div></main><footer><div class="container foot"><div class="brand"><span class="mark" style="border-color:#fff;color:#fff">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></div><p>Draft operational template • Not a public fundraising instrument</p></div></footer><script>
+function clearForm(){
+  if(!confirm('Clear all fields on this page?')) return;
+  document.querySelectorAll('input,textarea,select').forEach(el=>{
+    if(el.type==='checkbox'||el.type==='radio') el.checked=false;
+    else el.value='';
+  });
+}
+</script></body></html>
