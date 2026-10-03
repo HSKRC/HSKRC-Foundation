@@ -17,4 +17,6 @@ Disallow: /project-proposal-template.html
 Disallow: /budget-template.html
 Disallow: /completion-report-template.html
 
+Disallow: /readiness.html
+
 Sitemap: https://foundation.hskrc.org/sitemap.xml
