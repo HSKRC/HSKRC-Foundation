@@ -200,8 +200,18 @@
       <nav class="nav">
         <a href="#mission">About</a>
         <a href="#areas">What We Do</a>
-        <a href="#track">Track Funds</a>
-        <a href="governance.html#transparency">Transparency</a>
+
+        <details class="navGroup">
+          <summary>Transparency</summary>
+          <div class="navPanel">
+            <a href="governance.html#transparency">Transparency Framework</a>
+            <a href="#track">Track Funds</a>
+            <a href="registers.html">Project & Risk Registers</a>
+            <a href="templates.html">Project Reporting Templates</a>
+            <a href="complaints.html">Complaints & Safeguarding</a>
+          </div>
+        </details>
+
         <details class="navGroup">
           <summary>Governance</summary>
           <div class="navPanel">
@@ -214,6 +224,7 @@
             <a href="complaints.html">Raise a concern</a>
           </div>
         </details>
+
         <a href="#contact">Contact</a>
         <a class="donateLink" href="#support">Support</a>
       </nav>
@@ -455,6 +466,15 @@
       document.querySelectorAll('.navGroup[open]').forEach(group=>group.removeAttribute('open'));
       menu.setAttribute('aria-expanded','false');
     }));
+    document.querySelectorAll('.navGroup').forEach(group=>{
+      group.addEventListener('toggle',()=>{
+        if(group.open){
+          document.querySelectorAll('.navGroup[open]').forEach(other=>{
+            if(other!==group) other.removeAttribute('open');
+          });
+        }
+      });
+    });
     document.addEventListener('click',e=>{
       document.querySelectorAll('.navGroup[open]').forEach(group=>{
         if(!group.contains(e.target)) group.removeAttribute('open');
