@@ -112,7 +112,10 @@ async function showDashboard(admin){
   const next=new URLSearchParams(location.search).get("next");
   if(next&&/^[a-z0-9-]+\.html$/i.test(next))setTimeout(()=>location.replace(next),300);
 }
-window.addEventListener("DOMContentLoaded",async()=>{const a=await foundationAuth.getAdmin();if(a)return showDashboard(a);
+window.addEventListener("DOMContentLoaded",async()=>{
+const refresh=async()=>{const a=await foundationAuth.getAdmin();if(a)await showDashboard(a)};
+document.querySelector("#refreshDashboard")?.addEventListener("click",refresh);
+const a=await foundationAuth.getAdmin();if(a){await showDashboard(a);return}
 document.querySelector("#forgotPassword").addEventListener("click",async()=>{
   const msg=document.querySelector("#message");
   const email=document.querySelector("#email").value.trim();
@@ -121,6 +124,5 @@ document.querySelector("#forgotPassword").addEventListener("click",async()=>{
   const {error}=await foundationSupabase.auth.resetPasswordForEmail(email,{redirectTo:"https://foundation.hskrc.org/reset-password.html"});
   msg.textContent=error?error.message:"Password reset email sent. Check your inbox and spam folder.";
 });
-document.querySelector("#refreshDashboard")?.addEventListener("click",async()=>{const a=await foundationAuth.getAdmin();if(a)await showDashboard(a)});
 document.querySelector("#loginForm").addEventListener("submit",async e=>{e.preventDefault();const msg=document.querySelector("#message");msg.textContent="Signing in…";const {error}=await foundationSupabase.auth.signInWithPassword({email:document.querySelector("#email").value.trim(),password:document.querySelector("#password").value});if(error){msg.textContent=error.message;return}const admin=await foundationAuth.getAdmin();if(!admin){await foundationSupabase.auth.signOut();msg.textContent="This account is not authorised for Foundation administration.";return}msg.textContent="";showDashboard(admin)})});
 </script></body></html>
