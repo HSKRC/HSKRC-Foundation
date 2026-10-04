@@ -1,0 +1,11 @@
+(()=>{"use strict";
+const header=document.querySelector(".anav-header");if(!header)return;
+const menu=header.querySelector(".anav-menu"),groups=[...header.querySelectorAll(".anav-group")];
+if(menu)menu.addEventListener("click",()=>{const open=header.classList.toggle("is-open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});
+groups.forEach(g=>g.addEventListener("toggle",()=>{if(g.open)groups.forEach(o=>{if(o!==g)o.open=false})}));
+document.addEventListener("click",e=>{if(!header.contains(e.target)){groups.forEach(g=>g.open=false);header.classList.remove("is-open");if(menu){menu.setAttribute("aria-expanded","false");menu.textContent="☰"}}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){groups.forEach(g=>g.open=false);header.classList.remove("is-open");if(menu){menu.setAttribute("aria-expanded","false");menu.textContent="☰"}}});
+const file=(location.pathname.split("/").pop()||"admin.html").toLowerCase();
+header.querySelectorAll("a").forEach(a=>{const href=(a.getAttribute("href")||"").split("#")[0].toLowerCase();if(href===file)a.setAttribute("aria-current","page")});
+groups.forEach(g=>{if([...g.querySelectorAll("a")].some(a=>a.hasAttribute("aria-current")))g.classList.add("open-parent")});
+})();
