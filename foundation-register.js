@@ -60,6 +60,12 @@ async function loadRecords(){
   if(error)return showFatal(error.message);
   records=data||[];document.querySelector("#rows").innerHTML="";records.forEach(renderRow);updateSummary();setStatus("Central database connected");
   document.querySelector("#loading")?.remove();checkLegacy();
+  if(new URLSearchParams(location.search).get("new")==="1"){
+    history.replaceState({}, "", location.pathname);
+    await addRecord();
+    const last=document.querySelector("#rows")?.lastElementChild;
+    if(last){last.scrollIntoView({behavior:"smooth",block:"center"});last.querySelector("[data-col]")?.focus()}
+  }
 }
 function updateSummary(){if(typeof window.updateRegisterSummary==="function")window.updateRegisterSummary(records)}
 function setStatus(msg,bad=false){const e=document.querySelector("#saved");if(e){e.textContent=msg;e.style.color=bad?"#9b1c1c":"#666"}}
