@@ -188,7 +188,7 @@
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
+<link rel="stylesheet" href="foundation-nav.css"><script defer src="foundation-nav.js"></script></head>
 <body>
   <div class="topbar">
     <div class="container">
@@ -197,49 +197,37 @@
     </div>
   </div>
 
-  <header class="header">
-    <div class="container navwrap">
-      <a class="brand" href="#top">
-        <span class="mark">H</span>
-        <span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span>
-      </a>
-      <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
-      <nav class="nav">
-        <a href="about.html">About</a>
-        <a href="programs.html">What We Do</a>
-
-        <details class="navGroup">
-          <summary>Transparency</summary>
-          <div class="navPanel">
-            <a href="transparency.html">Transparency Framework</a>
-            <a href="#track">Track Funds</a>
-            <a href="financial-transparency.html">Financial Transparency</a>
-            <a href="reports.html">Project Reports</a>
-            <a href="complaints.html">Complaints & Safeguarding</a>
-          </div>
-        </details>
-
-        <details class="navGroup">
-          <summary>Governance</summary>
-          <div class="navPanel">
-            <a href="mission.html">Mission & Objectives</a>
-            <a href="governance.html">Governance</a>
-            <a href="policies.html">Policies</a>
-            <a href="templates.html">Templates</a>
-            <a href="registers.html">Registers</a>
-            <a href="capability-statement.html">Capability Statement</a>
-            <a href="theory-of-change.html">Theory of Change</a>
-            <a href="monitoring-evaluation.html">Monitoring & Evaluation</a>
-            <a href="#latest">Latest updates</a>
-            <a href="complaints.html">Raise a concern</a>
-          </div>
-        </details>
-
-        <a href="#contact">Contact</a>
-        <a class="donateLink" href="#support">Support</a>
-      </nav>
-    </div>
-  </header>
+  <header class="pnav-header">
+  <div class="pnav-wrap">
+    <a class="pnav-brand" href="index.html"><span class="pnav-mark">H</span><span><strong>HSKRC</strong><small>Humanitarian Foundation</small></span></a>
+    <button class="pnav-menu" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="pnav-links" aria-label="Main navigation">
+      <a href="about.html">About</a>
+      <a href="programs.html">What We Do</a>
+      <details class="pnav-group"><summary>Transparency</summary><div class="pnav-panel">
+        <a href="transparency.html">Transparency Framework</a>
+        <a href="index.html#track">Track Funds</a>
+        <a href="financial-transparency.html">Financial Transparency</a>
+        <a href="reports.html">Project Reports</a>
+        <a href="complaints.html">Complaints &amp; Safeguarding</a>
+      </div></details>
+      <details class="pnav-group"><summary>Governance</summary><div class="pnav-panel">
+        <a href="mission.html">Mission &amp; Objectives</a>
+        <a href="governance.html">Governance</a>
+        <a href="policies.html">Policies</a>
+        <a href="templates.html">Templates</a>
+        <a href="registers.html">Registers</a>
+        <a href="capability-statement.html">Capability Statement</a>
+        <a href="theory-of-change.html">Theory of Change</a>
+        <a href="monitoring-evaluation.html">Monitoring &amp; Evaluation</a>
+        <a href="index.html#latest">Latest updates</a>
+        <a href="complaints.html">Raise a concern</a>
+      </div></details>
+      <a href="index.html#contact">Contact</a>
+      <a class="pnav-support" href="index.html#support">Support</a>
+    </nav>
+  </div>
+</header>
 
   <main id="top">
     <section class="hero">
@@ -465,31 +453,6 @@
   </footer>
 
   <script>
-    const menu=document.querySelector('.menu');
-    const nav=document.querySelector('.nav');
-    menu.addEventListener('click',()=>{
-      const open=nav.classList.toggle('open');
-      menu.setAttribute('aria-expanded',String(open));
-    });
-    document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{
-      nav.classList.remove('open');
-      document.querySelectorAll('.navGroup[open]').forEach(group=>group.removeAttribute('open'));
-      menu.setAttribute('aria-expanded','false');
-    }));
-    document.querySelectorAll('.navGroup').forEach(group=>{
-      group.addEventListener('toggle',()=>{
-        if(group.open){
-          document.querySelectorAll('.navGroup[open]').forEach(other=>{
-            if(other!==group) other.removeAttribute('open');
-          });
-        }
-      });
-    });
-    document.addEventListener('click',e=>{
-      document.querySelectorAll('.navGroup[open]').forEach(group=>{
-        if(!group.contains(e.target)) group.removeAttribute('open');
-      });
-    });
 
     const trackerForm=document.querySelector('#trackerForm');
     const trackerEmpty=document.querySelector('#trackerEmpty');
